@@ -1,1 +1,14 @@
-{"trailingSlash":true,"cleanUrls":false,"redirects":[{"source":"/fotos/","destination":"/projecten/","permanent":true}]}
+{
+  "buildCommand": "python3 src/build.py",
+  "installCommand": "npm install",
+  "outputDirectory": "dist",
+  "trailingSlash": true,
+  "cleanUrls": false,
+  "redirects": [
+    {
+      "source": "/fotos/",
+      "destination": "/projecten/",
+      "permanent": true
+    }
+  ]
+}

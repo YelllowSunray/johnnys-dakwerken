@@ -14,6 +14,12 @@ ARROW = '<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentCol
 CHEV = '<svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>'
 
 BTN = "inline-flex h-12 items-center justify-center gap-2 r-btn px-4 text-base font-semibold transition hover:-translate-y-0.5 sm:px-6"
+OFFERTE_BTN_IN = (
+    '<span class="btn-in hero-offerte-in">'
+    '<span class="hero-offerte-lbl hero-offerte-lbl--long">Offerte aanvragen</span>'
+    '<span class="hero-offerte-lbl hero-offerte-lbl--short">Offerte <span class="hero-offerte-arr" aria-hidden="true">→</span></span>'
+    '</span>'
+)
 
 def hero_cta(dark=False):
     if dark:
@@ -22,9 +28,9 @@ def hero_cta(dark=False):
     else:
         off = f"{BTN} bg-accent text-white shadow-[0_10px_30px_-10px_#2d6a4f]"
         bel = f"{BTN} border-2 border-accent bg-transparent text-brand"
-    return (f'<div class="hero-cta flex flex-wrap gap-3">'
-            f'<a class="{off}" href="/offerte/"><span class="btn-in">Offerte aanvragen</span></a>'
-            f'<a class="{bel}" href="{PHONE_TEL}"><span class="btn-in">{TEL_SVG}Bel</span></a></div>')
+    return (f'<div class="hero-cta">'
+            f'<a class="{off} hero-cta-btn" href="/offerte/">{OFFERTE_BTN_IN}</a>'
+            f'<a class="{bel} hero-cta-btn" href="{PHONE_TEL}"><span class="btn-in">{TEL_SVG}Bel</span></a></div>')
 
 def contact_cta(dark=True):
     if dark:
