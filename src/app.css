@@ -135,7 +135,7 @@ html[data-style="strak"]{
 html[data-style="strak"] body{font-size:16.5px;background:#0a0a0b}
 html[data-style="strak"] h1,html[data-style="strak"] h2,html[data-style="strak"] h3{
   font-family:var(--font-sans);font-stretch:normal;font-style:normal;font-weight:500;
-  text-transform:uppercase;letter-spacing:.025em;line-height:1.04;
+  text-transform:none;letter-spacing:normal;line-height:1.04;
   background:none!important;-webkit-text-fill-color:#eef1f4!important;color:#eef1f4!important;
 }
 html[data-style="strak"] h1 em,html[data-style="strak"] h2 em{font-style:normal;font-weight:500;color:var(--lime)!important;-webkit-text-fill-color:var(--lime)!important}
@@ -540,6 +540,11 @@ html[data-style="nacht"] main :is(h1,h2,h3).font-serif{
   font-family:var(--font-sans)!important;
   font-style:normal!important;
   font-weight:500!important;
+}
+html[data-style="strak"] main :is(h1,h2,h3),
+html[data-style="strak"] :is(h1,h2,h3).font-serif{
+  text-transform:none!important;
+  letter-spacing:normal!important;
 }
 html[data-style="strak"] main :is(h1,h2) em,
 html[data-style="nacht"] main h1 em{
