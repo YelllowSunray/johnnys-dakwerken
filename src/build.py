@@ -64,13 +64,6 @@ def dcard(d, img_lazy=True):
             f'<p class="mt-2 flex-1 text-[15.5px] leading-relaxed text-muted">{esc(d["card"])}</p>'
             f'<span class="mt-4 inline-flex items-center gap-1.5 pt-1 text-[15px] font-semibold text-brand">Bekijk dienst {ARROW}</span></div></a>')
 
-def projecten_teaser():
-    return (f'<section class="sec-pad px-5"><div class="site-hero r-card border border-line bg-card p-6 md:p-8">'
-            f'<p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Foto\'s</p>'
-            f'<h2 class="mt-3 font-serif text-[clamp(1.35rem,2.85vw,1.85rem)] font-semibold text-ink">Eigen werk op de projectenpagina</h2>'
-            f'<p class="mt-3 max-w-xl text-[17px] text-muted">Voor deze dienst heeft Johnny\'s Dakwerken nog geen aparte fotogalerij op de site. Bekijk ons bitumen-, zink-, pannendak- en PVC-werk op de projectenpagina.</p>'
-            f'<p class="mt-6"><a class="inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-brand" href="/projecten/">Naar projecten {ARROW}</a></p></div></section>')
-
 def cta_band(h="Lekkage, schade of een dak dat aan vervanging toe is?", p="Neem contact op met Johnny's Dakwerken. Een inspectie is vrijblijvend en wij komen zo spoedig mogelijk bij u langs."):
     return (f'<section class="cta-end px-5"><div class="site-hero"><div class="overflow-hidden r-big bg-dark px-6 py-10 md:px-12 md:py-14">'
             f'<div class="grid items-center gap-8 md:grid-cols-[1.4fr_1fr]"><div><h2 class="font-serif text-[clamp(1.45rem,3.2vw,2.15rem)] font-semibold leading-tight text-white">{h}</h2>'
@@ -81,13 +74,17 @@ NAV = [("/", "Home"), ("/diensten/", "Diensten"), ("/werkwijze/", "Werkwijze"), 
 
 
 LOGO_ALT = "Johnny\u2019s Dakwerken, naar de homepage"
+BRUIN_MARK = ('<span class="logo-bruin" aria-hidden="true">'
+              '<svg class="logo-roof" viewBox="0 0 86 22" fill="none"><path d="M2 20 L43 3 L84 20" stroke="#c4a574" stroke-width="2.4" stroke-linejoin="miter"/></svg>'
+              '<span class="logo-bruin-type">Johnny\u2019s<span>Dakwerken</span></span></span>')
+
 def logo(dark=False):
     """Real logo (keyed from Johnny's flat logo). Header swaps variant per style; menu/footer are always dark."""
     if dark:
-        return f'<span class="logo-mark"><img class="logo-img logo-fixed" src="/img/logo-dk.webp" width="1020" height="442" alt="Johnny\u2019s Dakwerken"/></span>'
+        return f'<span class="logo-mark"><img class="logo-img logo-fixed" src="/img/logo-dk.webp" width="1020" height="442" alt="Johnny\u2019s Dakwerken"/>{BRUIN_MARK}</span>'
     return ('<span class="logo-mark">'
             '<img class="logo-img logo-lt" src="/img/logo-lt.webp" width="1020" height="442" alt="Johnny\u2019s Dakwerken" fetchpriority="high"/>'
-            '<img class="logo-img logo-dk" src="/img/logo-dk.webp" width="1020" height="442" alt="Johnny\u2019s Dakwerken"/></span>')
+            f'<img class="logo-img logo-dk" src="/img/logo-dk.webp" width="1020" height="442" alt="Johnny\u2019s Dakwerken"/>{BRUIN_MARK}</span>')
 
 def header(active):
     items = []
@@ -99,7 +96,7 @@ def header(active):
     for href, label in NAV:
         mm.append(f'<a class="flex items-center justify-between border-b border-white/10 py-3 font-serif text-[24px] font-semibold text-white" href="{href}">{label}<span class="text-xl text-white/40">→</span></a>')
     return (f'<header class="site-h sticky top-0 z-40 border-b border-line bg-surface/95 backdrop-blur-md"><div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 lg:h-[72px]">'
-            f'<a class="brand-lockup flex min-w-0 items-center gap-2 sm:gap-2.5" href="/">{logo()}<span class="brand-tag">Dakdekker · Heel Nederland</span></a>'
+            f'<a class="brand-lockup flex min-w-0 items-center gap-2 sm:gap-2.5" href="/">{logo()}<span class="brand-tag"><span class="brand-tag-full">Dakdekker · Heel Nederland</span><span class="brand-tag-bruin">HEEL Nederland</span></span></a>'
             f'<nav class="hidden items-center gap-5 xl:gap-7 lg:flex" aria-label="Hoofdmenu">{nav}'
             f'<a class="inline-flex h-11 items-center justify-center r-btn bg-accent px-5 text-[15px] font-semibold text-white shadow-[0_10px_30px_-10px_#2d6a4f] transition hover:-translate-y-0.5" href="/offerte/"><span class="btn-in">Offerte</span></a></nav>'
             f'<button type="button" id="menu-open" aria-controls="menu" aria-expanded="false" aria-label="Menu openen" class="burger-btn lg:hidden"><span class="burger" aria-hidden="true"><i></i><i></i></span></button></div></header>'
@@ -125,17 +122,18 @@ def footer():
 
 DOCK = ('<div class="style-switch-dock" aria-live="polite"><p class="style-switch-dock-label">STIJLSELECTOR</p>'
         '<div class="style-switch-dock-options" role="radiogroup" aria-label="Stijlselector">'
-        '<button type="button" role="radio" aria-checked="true" data-style-option="strak" class="style-switch-dock-btn is-active">Strak</button>'
-        '<button type="button" role="radio" aria-checked="false" data-style-option="nacht" class="style-switch-dock-btn">Nacht</button>'
+        '<button type="button" role="radio" aria-checked="false" data-style-option="strak" class="style-switch-dock-btn">Strak</button>'
+        '<button type="button" role="radio" aria-checked="true" data-style-option="bruin" class="style-switch-dock-btn is-active">Bruin</button>'
         '<button type="button" role="radio" aria-checked="false" data-style-option="ambachtelijk" class="style-switch-dock-btn">Ambachtelijk</button></div></div>')
 
-STYLE_BOOT = r"""(function(){var h=document.documentElement,TC={nacht:"#0c0d0e",strak:"#0a0a0b",ambachtelijk:"#17191b"},F={ambachtelijk:["playfair","sourcesans","exo2-italic"],nacht:["exo2-italic","07c7676b89ed2778-s.p.2bn3s6zvc0dyp"],strak:["exo2","exo2-italic","07c7676b89ed2778-s.p.2bn3s6zvc0dyp"]};function apply(v){h.setAttribute("data-style",v);if(v!=="ambachtelijk")h.setAttribute("data-lime","");else h.removeAttribute("data-lime");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",TC[v]||TC.strak);(F[v]||F.strak).forEach(function(f){var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="/fonts/"+f+".woff2";document.head.appendChild(l)})}var v="strak";try{var q=new URLSearchParams(location.search).get("style"),k="jd-style";v=q||localStorage.getItem(k)||"strak";if(!/^(ambachtelijk|nacht|strak)$/.test(v))v="strak";if(q)localStorage.setItem(k,v)}catch(e){v="strak"}apply(v)})();"""
+STYLE_BOOT = r"""(function(){var h=document.documentElement,TC={bruin:"#070707",strak:"#0a0a0b",ambachtelijk:"#17191b"},F={ambachtelijk:["playfair","sourcesans","exo2-italic"],bruin:["montserrat","montserrat-500","montserrat-700"],strak:["exo2","exo2-italic","07c7676b89ed2778-s.p.2bn3s6zvc0dyp"]};function lime(v){return v!=="ambachtelijk"&&v!=="bruin"}function apply(v){h.setAttribute("data-style",v);if(lime(v))h.setAttribute("data-lime","");else h.removeAttribute("data-lime");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",TC[v]||TC.bruin);(F[v]||F.bruin).forEach(function(f){var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="/fonts/"+f+".woff2";document.head.appendChild(l)})}var v="bruin";try{var q=new URLSearchParams(location.search).get("style"),k="jd-style";v=q||localStorage.getItem(k)||"bruin";if(v==="nacht")v="bruin";if(!/^(ambachtelijk|bruin|strak)$/.test(v))v="bruin";if(q||v==="bruin")localStorage.setItem(k,v)}catch(e){v="bruin"}apply(v)})();"""
 
 JS = """<script>
-(function(){var h=document.documentElement,b=document.querySelectorAll('[data-style-option]'),TC={nacht:'#0c0d0e',strak:'#0a0a0b',ambachtelijk:'#17191b'};
-function mark(v){b.forEach(function(x){var on=x.getAttribute('data-style-option')===v;x.classList.toggle('is-active',on);x.setAttribute('aria-checked',on?'true':'false')});var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',TC[v]||TC.strak)}
-mark(h.getAttribute('data-style')||'strak');
-b.forEach(function(x){x.addEventListener('click',function(){var v=x.getAttribute('data-style-option');h.setAttribute('data-style',v);if(v!=='ambachtelijk')h.setAttribute('data-lime','');else h.removeAttribute('data-lime');try{localStorage.setItem('jd-style',v)}catch(e){}mark(v)})})})();
+(function(){var h=document.documentElement,b=document.querySelectorAll('[data-style-option]'),TC={bruin:'#070707',strak:'#0a0a0b',ambachtelijk:'#17191b'};
+function lime(v){return v!=='ambachtelijk'&&v!=='bruin'}
+function mark(v){b.forEach(function(x){var on=x.getAttribute('data-style-option')===v;x.classList.toggle('is-active',on);x.setAttribute('aria-checked',on?'true':'false')});var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',TC[v]||TC.bruin)}
+mark(h.getAttribute('data-style')||'bruin');
+b.forEach(function(x){x.addEventListener('click',function(){var v=x.getAttribute('data-style-option');h.setAttribute('data-style',v);if(lime(v))h.setAttribute('data-lime','');else h.removeAttribute('data-lime');try{localStorage.setItem('jd-style',v)}catch(e){}mark(v)})})})();
 </script>
 <script>
 (function(){var m=document.getElementById('menu'),o=document.getElementById('menu-open'),c=document.getElementById('menu-close');
@@ -149,10 +147,11 @@ if(f){f.addEventListener('submit',function(e){e.preventDefault();var d=new FormD
 def page(path, title, desc, body, active="", breadcrumb_parts=None):
     url = path
     ld = breadcrumb_ld(breadcrumb_parts) if breadcrumb_parts else ""
-    out = (f'<!DOCTYPE html><html lang="nl" data-style="strak" data-lime=""><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="icon" href="/favicon.svg" type="image/svg+xml"/><link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/>'
+    home_attr = ' data-page="home"' if path == "/" else ""
+    out = (f'<!DOCTYPE html><html lang="nl" data-style="bruin"{home_attr}><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="icon" href="/favicon.svg" type="image/svg+xml"/><link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/>'
            f'<title>{esc(title)}</title><meta name="description" content="{esc(desc)}"/><meta name="robots" content="noindex"/>'
            f'<meta property="og:title" content="{esc(title)}"/><meta property="og:description" content="{esc(desc)}"/><meta property="og:locale" content="nl_NL"/>'
-           f'<meta name="theme-color" content="#0a0a0b"/>'
+           f'<meta name="theme-color" content="#070707"/>'
            f'{org_ld()}{ld}'
            f'<script>{STYLE_BOOT}</script>'
            f'<link rel="stylesheet" href="/assets/app.css"/></head><body>{header(active)}<main>{body}</main>{footer()}{DOCK}{JS}<script src="/motion.js" defer></script></body></html>')
@@ -254,14 +253,15 @@ MATERIEEL = ('<section class="sec-pad px-5"><div class="site-hero r-big border b
   '<li class="flex items-center gap-4 r-img bg-surface p-4"><span class="grid h-12 w-12 shrink-0 place-items-center r-sm bg-accent text-white"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 3v18M17 3v18M7 7h10M7 12h10M7 17h10"/></svg></span><span class="font-semibold text-ink">Ladderlift</span></li>'
   '<li class="flex items-center gap-4 r-img bg-surface p-4"><span class="grid h-12 w-12 shrink-0 place-items-center r-sm bg-accent text-white"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 7h14v9H2zM16 10h4l2 3v3h-6"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></span><span class="font-semibold text-ink">Aanhanger met onze reclame</span></li></ul></div></div></section>')
 
-def stats():
+def stats(wide=False):
     items = [("20+", "Jaar ervaring"), ("NL", "Heel Nederland · vanuit Deventer")]
     cells = ""
     for i, (a, b) in enumerate(items):
         cls = "border-r border-line pr-3 mr-3" if i < len(items) - 1 else ""
         a2 = a.replace("20", '<span data-count="20">20</span>', 1) if a == "20+" else (f'<span data-count="{a}">{a}</span>' if a.isdigit() else a)
         cells += f'<div class="min-w-0 {cls}"><dt class="font-serif text-[clamp(1.05rem,2.7vw,1.45rem)] font-medium tracking-tight text-ink">{a2}</dt><dd class="mt-1 text-[12.5px] text-muted">{b}</dd></div>'
-    return f'<dl class="hero-stats grid grid-cols-2 gap-4 border-t border-line pt-5 sm:max-w-md">{cells}</dl>'
+    cap = "" if wide else " sm:max-w-md"
+    return f'<dl class="hero-stats grid grid-cols-2 gap-4 border-t border-line pt-5{cap}">{cells}</dl>'
 
 # ---------------- pages ----------------
 def home():
@@ -288,7 +288,7 @@ def home():
       f'<p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Aan het werk</p><h2 class="mt-3 font-serif text-[clamp(1.55rem,3.55vw,2.45rem)] font-semibold leading-tight text-ink">Vakwerk op uw dak</h2>'
       f'<p class="mt-4 max-w-md text-lg text-muted">Johnny\'s Dakwerken pakt het dakwerk aan met vakkennis en eigen materieel. Vraag een offerte aan of bel voor een vrijblijvende inspectie.</p><div class="mt-6">{hero_cta()}</div></div><div>{roofer_art()}</div></div></section>'
       f'<section class="sec-pad border-y border-line bg-band px-5"><div class="mx-auto grid max-w-6xl items-center gap-6 md:grid-cols-[auto_1fr] md:gap-14">'
-      f'<div class="relative aspect-[4/5] w-full overflow-hidden r-img shadow-xl md:aspect-[3/4] md:w-[260px]"><img src="/img/johnny.jpg" alt="Johnny van Ophuizen" loading="eager" class="absolute inset-0 h-full w-full object-cover" style="object-position:50% 25%"/></div>'
+      f'<div class="relative aspect-[4/5] w-full overflow-hidden r-img shadow-xl md:aspect-[3/4] md:w-[260px]"><img src="/img/johnny.jpg" alt="Johnny van Ophuizen" loading="eager" class="absolute inset-0 h-full w-full object-cover" style="object-position:50% 42%"/></div>'
       f'<div><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Over ons</p>'
       f'<h2 class="mt-3 font-serif text-[clamp(1.55rem,3.55vw,2.45rem)] font-medium leading-tight text-ink">Even voorstellen: Johnny</h2>'
       f'<p class="mt-4 max-w-2xl text-lg text-muted">Met ruim +20 jaar ervaring in het dakdekkersvak weet Johnny als geen ander wat er komt kijken bij goed en vakkundig dakwerk. Samen met zijn team van ervaren vakmensen staat hij iedere dag klaar om kwaliteit en vakmanschap te leveren.</p>'
@@ -346,14 +346,14 @@ def dienst(d):
     paras = "".join(f'<p class="mt-4 text-[17px] leading-relaxed text-muted">{esc(p)}</p>' for p in d["paras"])
     facts = "".join(f'<li class="flex gap-3">{CHECK}<span class="text-[16px] text-ink">{esc(f)}</span></li>' for f in d["facts"])
     when = "".join(f'<li class="flex gap-3">{CHECK}<span class="text-[16px] text-ink">{esc(w)}</span></li>' for w in d["when"])
-    info = (f'<section class="sec-pad px-5"><div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-16"><div>'
+    info = (f'<section class="sec-pad px-5"><div class="dienst-info is-compact mx-auto grid max-w-6xl gap-10 lg:gap-16"><div class="dienst-info-copy">'
       f'<h2 class="font-serif text-[clamp(1.45rem,3.2vw,2.15rem)] font-semibold leading-tight text-ink">{esc(d["h2"])}</h2>{paras}</div>'
-      f'<div class="space-y-5"><div class="r-card border border-line bg-card p-6"><h3 class="font-serif text-xl font-semibold text-ink">{esc(d["facts_h"])}</h3><ul class="mt-4 space-y-3">{facts}</ul></div>'
-      f'<div class="r-card border border-line bg-card p-6"><h3 class="font-serif text-xl font-semibold text-ink">Wanneer neemt u contact op?</h3><ul class="mt-4 space-y-3">{when}</ul></div></div></div></section>')
+      f'<div class="dienst-info-aside grid gap-5 sm:grid-cols-2"><div class="r-card h-full border border-line bg-card p-6"><h3 class="font-serif text-xl font-semibold text-ink">{esc(d["facts_h"])}</h3><ul class="mt-4 space-y-3">{facts}</ul></div>'
+      f'<div class="r-card h-full border border-line bg-card p-6"><h3 class="font-serif text-xl font-semibold text-ink">Wanneer neemt u contact op?</h3><ul class="mt-4 space-y-3">{when}</ul></div></div></div></section>')
     gallery = ""
     g = d.get("gallery") or []
     if g:
-        spans = ["lg:col-span-2"] * 3 if len(g) == 3 else ["lg:col-span-2"] * 3 + ["lg:col-span-3"] * 2
+        spans = ["lg:col-span-2"] * 3 + ["lg:col-span-3"] * 2 if len(g) == 5 else ["lg:col-span-2"] * len(g)
         gi = "".join(f'<a class="gal group relative block aspect-[4/3] overflow-hidden r-img bg-band {sp}" href="{big}" target="_blank" rel="noopener"><img src="{sm}" alt="{esc(al)}" loading="eager" width="720" height="540" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"/></a>' for (sm, big, al), sp in zip(g, spans))
         gallery = (f'<section class="sec-pad px-5"><div class="site-hero"><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Foto\'s</p>'
                    f'<h2 class="mb-8 mt-3 font-serif text-[clamp(1.35rem,2.85vw,1.85rem)] font-semibold text-ink">Werk van Johnny\'s Dakwerken</h2><div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">{gi}</div></div></section>')
@@ -369,10 +369,9 @@ def dienst(d):
     related = (f'<section class="sec-pad px-5"><div class="site-hero"><h2 class="mb-8 font-serif text-[clamp(1.35rem,2.85vw,1.85rem)] font-semibold text-ink">Bekijk ook</h2>'
       f'<div class="diensten-grid grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{rel}</div><p class="mt-8"><a class="inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-brand" href="/diensten/">Alle diensten {ARROW}</a></p></div></section>')
     vid = work_video() if d["slug"] in ("bitumen", "zinkwerk") else ""
-    photos_extra = projecten_teaser() if not g and d["slug"] not in ("bitumen", "zinkwerk") else ""
     t, desc = TITLES[d["slug"]]
     crumbs = [("/", "Home"), ("/diensten/", "Diensten"), (None, d["title"])]
-    page(f"/diensten/{d['slug']}/", t, desc, hero + info + vid + gallery + blocks + photos_extra + steps + related + cta_band(), "/diensten/", breadcrumb_parts=crumbs)
+    page(f"/diensten/{d['slug']}/", t, desc, hero + info + vid + gallery + blocks + steps + related + cta_band(), "/diensten/", breadcrumb_parts=crumbs)
 
 def werkwijze():
     long_steps = [
@@ -402,14 +401,11 @@ def over():
     body = (f'<section class="sec-pad bg-surface"><div class="site-hero over-ons-hero">'
       f'<p class="over-kicker flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>Over ons</p>'
       f'<h1 class="over-title mt-1 font-serif text-[clamp(1.8rem,4.45vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink">Even voorstellen: Johnny</h1>'
-      f'<div class="over-photo-wrap"><div class="over-photo-in r-img shadow-md"><img src="/img/johnny.jpg" alt="Johnny van Ophuizen met het team van Johnny\u2019s Dakwerken" loading="eager" width="320" height="400"/></div></div>'
+      f'<div class="over-photo-wrap"><div class="over-photo-in r-img shadow-md"><img src="/img/johnny.jpg" alt="Johnny van Ophuizen" loading="eager" width="320" height="400"/></div></div>'
       f'<div class="over-intro mt-2 flex flex-col gap-4 max-w-2xl">{intro}</div></div></section>'
-      f'<section class="sec-pad px-5"><div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:gap-16"><div>'
-      f'<h2 class="font-serif text-[clamp(1.45rem,3.2vw,2.15rem)] font-medium leading-tight text-ink">Johnny van Ophuizen</h2>'
-      f'<p class="mt-3 text-[17px] leading-relaxed text-muted">Geboren en getogen in Deventer, actief in heel Nederland. Johnny\u2019s Dakwerken is gespecialiseerd in dakbedekking: van bitumen en kunststof tot pannendaken en zinkwerk.</p>'
-      f'<p class="mt-4 text-[17px] leading-relaxed text-muted">Wanneer uw dak aan vervanging toe is of u een lekkage heeft, neem contact op. Wij komen zo spoedig mogelijk bij u langs met een vakkundige oplossing en adviseren per ondergrond een passend daksysteem.</p></div>'
+      f'<section class="sec-pad px-5"><div class="mx-auto max-w-6xl">'
       f'<div class="r-card border border-line bg-card p-6 md:p-8"><h3 class="font-serif text-xl font-medium text-ink">De materialen waarmee wij werken</h3><ul class="mt-5 flex flex-wrap gap-2.5">{mats}</ul>'
-      f'<div class="mt-8">{stats()}</div></div></div></section>'
+      f'<div class="mt-8">{stats(wide=True)}</div></div></div></section>'
       f'{MATERIEEL}{cta_band("Even kennismaken?", "Bel of mail ons. Een inspectie is vrijblijvend.")}')
     page("/over-ons/", "Over Johnny en het team | Johnny's Dakwerken",
          "Even voorstellen: Johnny en zijn team van ervaren vakmensen. Johnny's Dakwerken is actief in heel Nederland vanuit Deventer, met ruim 20 jaar ervaring in dakbedekking.", body, "/over-ons/")
@@ -421,7 +417,7 @@ def projecten():
         for sm, big, al in dd.get("gallery", []):
             ALT[big.split("/")[-1][:-5]] = al
     ALT.update({"bit2": "Bitumineuze dakbedekking met opstaande randen", "zin6": "Zinken dakbedekking met sluitnaden", "pan1": "Dakpannen met een zinken goot", "pvc1": "Wit PVC-dak met dakdoorvoeren"})
-    order = ["pvc1", "bit1", "zin6", "pan1", "bit3", "zin3", "pan3", "bit4"]
+    order = ["pvc1", "bit1", "zin6", "pan5", "bit3", "zin3", "pan3", "bit4"]
     cards = ""
     for n in order:
         sl, lab = P[n[:3]]
