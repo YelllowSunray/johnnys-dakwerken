@@ -48,7 +48,7 @@ def contact_cta(dark=True):
 
 def sec_head(kicker, h2, p=None, center=False):
     return (f'<div class="mb-10 max-w-2xl md:mb-12"><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">{kicker}</p>'
-            f'<h2 class="mt-3 font-serif text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-tight tracking-tight text-ink">{h2}</h2>'
+            f'<h2 class="mt-3 font-serif text-[clamp(1.55rem,3.55vw,2.45rem)] font-semibold leading-tight tracking-tight text-ink">{h2}</h2>'
             + (f'<p class="mt-4 text-lg text-muted">{p}</p>' if p else '') + '</div>')
 
 def dcard(d, img_lazy=True):
@@ -67,13 +67,13 @@ def dcard(d, img_lazy=True):
 def projecten_teaser():
     return (f'<section class="sec-pad px-5"><div class="site-hero r-card border border-line bg-card p-6 md:p-8">'
             f'<p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Foto\'s</p>'
-            f'<h2 class="mt-3 font-serif text-[clamp(1.5rem,3.2vw,2.1rem)] font-semibold text-ink">Eigen werk op de projectenpagina</h2>'
+            f'<h2 class="mt-3 font-serif text-[clamp(1.35rem,2.85vw,1.85rem)] font-semibold text-ink">Eigen werk op de projectenpagina</h2>'
             f'<p class="mt-3 max-w-xl text-[17px] text-muted">Voor deze dienst heeft Johnny\'s Dakwerken nog geen aparte fotogalerij op de site. Bekijk ons bitumen-, zink-, pannendak- en PVC-werk op de projectenpagina.</p>'
             f'<p class="mt-6"><a class="inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-brand" href="/projecten/">Naar projecten {ARROW}</a></p></div></section>')
 
 def cta_band(h="Lekkage, schade of een dak dat aan vervanging toe is?", p="Neem contact op met Johnny's Dakwerken. Een inspectie is vrijblijvend en wij komen zo spoedig mogelijk bij u langs."):
     return (f'<section class="cta-end px-5"><div class="site-hero"><div class="overflow-hidden r-big bg-dark px-6 py-10 md:px-12 md:py-14">'
-            f'<div class="grid items-center gap-8 md:grid-cols-[1.4fr_1fr]"><div><h2 class="font-serif text-[clamp(1.6rem,3.6vw,2.4rem)] font-semibold leading-tight text-white">{h}</h2>'
+            f'<div class="grid items-center gap-8 md:grid-cols-[1.4fr_1fr]"><div><h2 class="font-serif text-[clamp(1.45rem,3.2vw,2.15rem)] font-semibold leading-tight text-white">{h}</h2>'
             f'<p class="mt-3 max-w-xl text-[17px] text-slate-300">{p}</p></div>'
             f'<div class="md:justify-self-end">{contact_cta(dark=True)}</div></div></div></div></section>')
 
@@ -201,7 +201,7 @@ MARQ = (f'<div class="marq" aria-hidden="true"><div class="marq-a"><div class="m
 def work_video():
     return ('<section class="sec-pad px-5"><div class="site-hero">'
             '<p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">In beweging</p>'
-            '<h2 class="mt-3 font-serif text-[clamp(1.5rem,3.2vw,2.1rem)] font-semibold text-ink">Aan het werk: bitumen &amp; zinkwerk</h2>'
+            '<h2 class="mt-3 font-serif text-[clamp(1.35rem,2.85vw,1.85rem)] font-semibold text-ink">Aan het werk: bitumen &amp; zinkwerk</h2>'
             '<div class="work-vid-wrap mx-auto mt-6 max-w-[880px]">'
             '<div class="work-vid relative overflow-hidden r-img bg-band">'
             '<video class="block aspect-video w-full object-cover" width="960" height="540" poster="/img/video-poster.webp" muted playsinline loop preload="metadata" data-work-video>'
@@ -244,11 +244,11 @@ def org_ld():
 def page_head(kicker, h1, intro):
     return (f'<section class="sec-pad bg-surface"><div class="site-hero">'
             f'<p class="flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>{kicker}</p>'
-            f'<h1 class="mt-4 max-w-3xl font-serif text-[clamp(2.1rem,5vw,3.6rem)] font-semibold leading-[1.05] tracking-tight text-ink">{h1}</h1>'
+            f'<h1 class="mt-4 max-w-3xl font-serif text-[clamp(1.9rem,4.45vw,3.2rem)] font-semibold leading-[1.05] tracking-tight text-ink">{h1}</h1>'
             f'<p class="mt-5 max-w-2xl text-[clamp(17px,1.4vw,19px)] leading-relaxed text-muted">{intro}</p></div></section>')
 
 MATERIEEL = ('<section class="sec-pad px-5"><div class="site-hero r-big border border-line bg-card p-7 md:p-10"><div class="grid items-center gap-6 md:grid-cols-[1.3fr_1fr]">'
-  '<div><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Eigen materieel</p><h2 class="mt-3 font-serif text-[clamp(1.5rem,3.2vw,2.2rem)] font-semibold leading-tight text-ink">Uitgerust voor het werk</h2>'
+  '<div><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Eigen materieel</p><h2 class="mt-3 font-serif text-[clamp(1.35rem,2.85vw,1.95rem)] font-semibold leading-tight text-ink">Uitgerust voor het werk</h2>'
   '<p class="mt-3 text-[17px] text-muted">Naast vakmanschap heeft Johnny\'s Dakwerken ook eigen materieel: een ladderlift en een aanhanger met onze reclame erop.</p></div>'
   '<ul class="grid gap-3 sm:grid-cols-2 md:grid-cols-1">'
   '<li class="flex items-center gap-4 r-img bg-surface p-4"><span class="grid h-12 w-12 shrink-0 place-items-center r-sm bg-accent text-white"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 3v18M17 3v18M7 7h10M7 12h10M7 17h10"/></svg></span><span class="font-semibold text-ink">Ladderlift</span></li>'
@@ -260,7 +260,7 @@ def stats():
     for i, (a, b) in enumerate(items):
         cls = "border-r border-line pr-3 mr-3" if i < len(items) - 1 else ""
         a2 = a.replace("20", '<span data-count="20">20</span>', 1) if a == "20+" else (f'<span data-count="{a}">{a}</span>' if a.isdigit() else a)
-        cells += f'<div class="min-w-0 {cls}"><dt class="font-serif text-[clamp(1.15rem,3vw,1.65rem)] font-bold tracking-tight text-ink">{a2}</dt><dd class="mt-1 text-[12.5px] text-muted">{b}</dd></div>'
+        cells += f'<div class="min-w-0 {cls}"><dt class="font-serif text-[clamp(1.05rem,2.7vw,1.45rem)] font-medium tracking-tight text-ink">{a2}</dt><dd class="mt-1 text-[12.5px] text-muted">{b}</dd></div>'
     return f'<dl class="hero-stats grid grid-cols-2 gap-4 border-t border-line pt-5 sm:max-w-md">{cells}</dl>'
 
 # ---------------- pages ----------------
@@ -273,7 +273,7 @@ def home():
     whyh = "".join(f'<li class="r-card border border-line bg-card p-6"><h3 class="font-serif text-lg font-semibold text-ink">{esc(a)}</h3><p class="mt-2 text-[15.5px] leading-relaxed text-muted">{esc(b)}</p></li>' for a, b in why)
     body = (f'<section class="overflow-hidden bg-surface pb-12 pt-6 lg:pb-20 lg:pt-10"><div class="hero-grid site-hero grid items-center gap-6 lg:grid-cols-2 lg:gap-16"><div class="hero-tx min-w-0">'
       f'<p class="mb-4 flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>Dakdekker in heel Nederland</p>'
-      f'<h1 class="font-serif text-[clamp(2.25rem,5.2vw,4.25rem)] font-semibold leading-[1.02] tracking-tight text-ink">Uw dak, <em class="font-semibold not-italic text-brand">weer jarenlang waterdicht</em></h1>'
+      f'<h1 class="font-serif text-[clamp(2rem,4.65vw,3.75rem)] font-medium leading-[1.04] tracking-tight text-ink">Uw dak, <em class="font-medium not-italic text-brand">weer jarenlang waterdicht</em></h1>'
       f'<p class="mt-4 max-w-[540px] text-[17px] leading-snug text-muted lg:hidden">Bitumen, kunststof, leien, pannendaken en zinkwerk. Bij lekkage komen wij zo snel mogelijk bij u langs.</p>'
       f'<p class="mt-5 hidden max-w-[540px] text-[clamp(17px,1.45vw,20px)] leading-snug text-muted lg:block">Johnny\'s Dakwerken verzorgt bitumen, kunststof, leien, pannendaken, zinkwerk en boeibekleding. Bij lekkage of schade komen wij zo spoedig mogelijk bij u langs.</p>'
       f'<div class="mt-6 lg:mt-8">{hero_cta()}</div><div class="mt-8 hidden lg:block hero-stats-slot">{stats()}</div></div>'
@@ -285,14 +285,15 @@ def home():
       f'<div class="diensten-grid diensten-grid-home grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">{cards}</div>'
       f'<p class="mt-8"><a class="inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-brand" href="/diensten/">Alle diensten bekijken {ARROW}</a></p></div></section>'
       f'<section class="roofer-sec sec-pad px-5"><div class="mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[1fr_1.2fr] md:gap-10"><div>'
-      f'<p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Aan het werk</p><h2 class="mt-3 font-serif text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-tight text-ink">Vakwerk op uw dak</h2>'
+      f'<p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Aan het werk</p><h2 class="mt-3 font-serif text-[clamp(1.55rem,3.55vw,2.45rem)] font-semibold leading-tight text-ink">Vakwerk op uw dak</h2>'
       f'<p class="mt-4 max-w-md text-lg text-muted">Johnny\'s Dakwerken pakt het dakwerk aan met vakkennis en eigen materieel. Vraag een offerte aan of bel voor een vrijblijvende inspectie.</p><div class="mt-6">{hero_cta()}</div></div><div>{roofer_art()}</div></div></section>'
       f'<section class="sec-pad border-y border-line bg-band px-5"><div class="mx-auto grid max-w-6xl items-center gap-6 md:grid-cols-[auto_1fr] md:gap-14">'
       f'<div class="relative aspect-[4/5] w-full overflow-hidden r-img shadow-xl md:aspect-[3/4] md:w-[260px]"><img src="/img/johnny.jpg" alt="Johnny van Ophuizen" loading="eager" class="absolute inset-0 h-full w-full object-cover" style="object-position:50% 25%"/></div>'
-      f'<div><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Over Johnny</p>'
-      f'<h2 class="mt-3 font-serif text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-tight text-ink">Geboren en getogen in Deventer</h2>'
-      f'<p class="mt-4 max-w-2xl text-lg text-muted">“Ik ben Johnny van Ophuizen. Dakdekken is mijn lust en mijn leven. Met ruim 20 jaar ervaring in dakbedekking zorg ik ervoor dat uw dak weer jarenlang bestand is tegen alle weersinvloeden. Kwaliteit en service staan bij mij hoog in het vaandel.”</p>'
-      f'<p class="mt-6"><a class="inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-brand" href="/over-ons/">Meer over Johnny {ARROW}</a></p></div></div></section>'
+      f'<div><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Over ons</p>'
+      f'<h2 class="mt-3 font-serif text-[clamp(1.55rem,3.55vw,2.45rem)] font-medium leading-tight text-ink">Even voorstellen: Johnny</h2>'
+      f'<p class="mt-4 max-w-2xl text-lg text-muted">Met ruim +20 jaar ervaring in het dakdekkersvak weet Johnny als geen ander wat er komt kijken bij goed en vakkundig dakwerk. Samen met zijn team van ervaren vakmensen staat hij iedere dag klaar om kwaliteit en vakmanschap te leveren.</p>'
+      f'<p class="mt-4 max-w-2xl text-lg font-medium text-ink">Want goed dakwerk maak je niet alleen, dat doe je samen!</p>'
+      f'<p class="mt-6"><a class="inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-brand" href="/over-ons/">Meer over ons {ARROW}</a></p></div></div></section>'
       f'<section class="sec-pad px-5"><div class="site-hero">{sec_head("Waarom Johnny\'s Dakwerken", "Kwaliteit en service staan voorop")}<ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{whyh}</ul>'
       f'<p class="mt-8"><a class="inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-brand" href="/werkwijze/">Bekijk de werkwijze {ARROW}</a></p></div></section>'
       f'<section class="sec-pad border-y border-line bg-band px-5"><div class="site-hero">{sec_head("Werkgebied", "Actief in heel Nederland, vanuit Deventer", "Johnny\'s Dakwerken werkt door het hele land: van spoedreparatie tot complete renovatie. Onze vestiging en uitvalsbasis is Deventer.")}'
@@ -309,7 +310,7 @@ def diensten():
              f'<span class="mt-6 inline-flex items-center gap-1.5 pt-1 text-[15px] font-semibold text-white">Neem contact op {ARROW}</span></a>')
     mats = "".join(f'<li class="r-btn border border-line bg-card px-4 py-2 text-[15px] font-medium text-ink">{m}</li>' for m in ["Bitumen", "Kunststof", "Leien", "Pannendaken", "Zinkwerk", "Boeibekleding"])
     body = (f'<section class="sec-pad bg-surface"><div class="site-hero"><p class="flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>Diensten</p>'
-      f'<h1 class="mt-4 max-w-3xl font-serif text-[clamp(2.1rem,5vw,3.6rem)] font-semibold leading-[1.05] tracking-tight text-ink">Alle dakwerk van Johnny\'s Dakwerken, op één plek</h1>'
+      f'<h1 class="mt-4 max-w-3xl font-serif text-[clamp(1.9rem,4.45vw,3.2rem)] font-semibold leading-[1.05] tracking-tight text-ink">Alle dakwerk van Johnny\'s Dakwerken, op één plek</h1>'
       f'<p class="mt-5 max-w-2xl text-[clamp(17px,1.4vw,19px)] leading-relaxed text-muted">Voor bitumineuze en kunststof dakbedekking bent u bij ons aan het juiste adres. Kies hieronder een dienst voor meer informatie.</p>'
       f'<div class="mt-7">{hero_cta()}</div></div></section>'
       f'<section class="sec-pad px-5"><div class="site-hero"><div class="diensten-grid grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{cards}{EXTRA}</div>'
@@ -333,7 +334,7 @@ TITLES = {
 def dienst(d):
     # hero
     hx = (f'<div class="hero-tx min-w-0"><p class="mb-3 flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand lg:mb-5"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>{esc(d["kicker"])}</p>'
-          f'<h1 class="font-serif text-[clamp(2rem,5vw,3.75rem)] font-semibold leading-[1.04] tracking-tight text-ink">{esc(d["title"])}</h1>'
+          f'<h1 class="font-serif text-[clamp(1.8rem,4.45vw,3.35rem)] font-medium leading-[1.05] tracking-tight text-ink">{esc(d["title"])}</h1>'
           f'<p class="mt-4 max-w-[540px] text-[17px] leading-snug text-muted lg:mt-5 lg:text-[19px] lg:max-w-2xl">{esc(d["intro"])}</p>'
           f'<div class="mt-6 lg:mt-8">{hero_cta()}</div></div>')
     if d.get("hero_text_only"):
@@ -346,7 +347,7 @@ def dienst(d):
     facts = "".join(f'<li class="flex gap-3">{CHECK}<span class="text-[16px] text-ink">{esc(f)}</span></li>' for f in d["facts"])
     when = "".join(f'<li class="flex gap-3">{CHECK}<span class="text-[16px] text-ink">{esc(w)}</span></li>' for w in d["when"])
     info = (f'<section class="sec-pad px-5"><div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-16"><div>'
-      f'<h2 class="font-serif text-[clamp(1.6rem,3.6vw,2.4rem)] font-semibold leading-tight text-ink">{esc(d["h2"])}</h2>{paras}</div>'
+      f'<h2 class="font-serif text-[clamp(1.45rem,3.2vw,2.15rem)] font-semibold leading-tight text-ink">{esc(d["h2"])}</h2>{paras}</div>'
       f'<div class="space-y-5"><div class="r-card border border-line bg-card p-6"><h3 class="font-serif text-xl font-semibold text-ink">{esc(d["facts_h"])}</h3><ul class="mt-4 space-y-3">{facts}</ul></div>'
       f'<div class="r-card border border-line bg-card p-6"><h3 class="font-serif text-xl font-semibold text-ink">Wanneer neemt u contact op?</h3><ul class="mt-4 space-y-3">{when}</ul></div></div></div></section>')
     gallery = ""
@@ -355,17 +356,17 @@ def dienst(d):
         spans = ["lg:col-span-2"] * 3 if len(g) == 3 else ["lg:col-span-2"] * 3 + ["lg:col-span-3"] * 2
         gi = "".join(f'<a class="gal group relative block aspect-[4/3] overflow-hidden r-img bg-band {sp}" href="{big}" target="_blank" rel="noopener"><img src="{sm}" alt="{esc(al)}" loading="eager" width="720" height="540" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"/></a>' for (sm, big, al), sp in zip(g, spans))
         gallery = (f'<section class="sec-pad px-5"><div class="site-hero"><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Foto\'s</p>'
-                   f'<h2 class="mb-8 mt-3 font-serif text-[clamp(1.5rem,3.2vw,2.1rem)] font-semibold text-ink">Werk van Johnny\'s Dakwerken</h2><div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">{gi}</div></div></section>')
+                   f'<h2 class="mb-8 mt-3 font-serif text-[clamp(1.35rem,2.85vw,1.85rem)] font-semibold text-ink">Werk van Johnny\'s Dakwerken</h2><div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">{gi}</div></div></section>')
     blocks = ""
     if d.get("blocks"):
         n = len(d["blocks"])
         cols = "md:grid-cols-2 lg:grid-cols-3" if n % 3 == 0 else "md:grid-cols-2"
         bl = "".join(f'<div class="r-card border border-line bg-card p-6"><h3 class="font-serif text-xl font-semibold text-ink">{esc(t)}</h3><p class="mt-2 text-[15.5px] leading-relaxed text-muted">{esc(p)}</p></div>' for t, p in d["blocks"])
-        blocks = f'<section class="sec-pad px-5"><div class="site-hero"><h2 class="mb-8 font-serif text-[clamp(1.5rem,3.2vw,2.1rem)] font-semibold text-ink">{esc(d["blocks_h"])}</h2><div class="grid gap-5 {cols}">{bl}</div></div></section>'
+        blocks = f'<section class="sec-pad px-5"><div class="site-hero"><h2 class="mb-8 font-serif text-[clamp(1.35rem,2.85vw,1.85rem)] font-semibold text-ink">{esc(d["blocks_h"])}</h2><div class="grid gap-5 {cols}">{bl}</div></div></section>'
     steps = (f'<section class="sec-pad border-y border-line bg-band px-5"><div class="site-hero">{sec_head("Werkwijze", "Zo werken wij")}'
       f'<ol class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{steps_html(d["steps"])}</ol></div></section>')
     rel = "".join(dcard(BY[s]) for s in d["related"])
-    related = (f'<section class="sec-pad px-5"><div class="site-hero"><h2 class="mb-8 font-serif text-[clamp(1.5rem,3.2vw,2.1rem)] font-semibold text-ink">Bekijk ook</h2>'
+    related = (f'<section class="sec-pad px-5"><div class="site-hero"><h2 class="mb-8 font-serif text-[clamp(1.35rem,2.85vw,1.85rem)] font-semibold text-ink">Bekijk ook</h2>'
       f'<div class="diensten-grid grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{rel}</div><p class="mt-8"><a class="inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-brand" href="/diensten/">Alle diensten {ARROW}</a></p></div></section>')
     vid = work_video() if d["slug"] in ("bitumen", "zinkwerk") else ""
     photos_extra = projecten_teaser() if not g and d["slug"] not in ("bitumen", "zinkwerk") else ""
@@ -393,21 +394,25 @@ def werkwijze():
 
 def over():
     mats = "".join(f'<li><a class="inline-flex min-h-[44px] items-center r-btn border border-line bg-card px-5 text-[15px] font-medium text-ink transition hover:border-accent hover:text-brand" href="/diensten/{s}/">{l}</a></li>' for s, l in [("bitumen", "Bitumen"), ("kunststof", "Kunststof"), ("leien", "Leien"), ("zinkwerk", "Zink"), ("nieuwbouw-verbouw-renovatie", "Boeibekleding")])
+    intro = (
+      '<p class="text-[17px] leading-relaxed text-muted">Met ruim +20 jaar ervaring in het dakdekkersvak weet Johnny als geen ander wat er komt kijken bij goed en vakkundig dakwerk.</p>'
+      '<p class="text-[17px] leading-relaxed text-muted">Maar bij Johnny\u2019s Dakwerken draait het niet alleen om Johnny. Samen met zijn team van ervaren vakmensen staat hij iedere dag klaar om kwaliteit en vakmanschap te leveren.</p>'
+      '<p class="text-[17px] leading-relaxed text-muted">Van kleine reparaties tot complete dakrenovaties: met een nuchtere aanpak, korte lijnen en oog voor detail zorgen we samen voor een goed resultaat.</p>'
+      '<p class="text-[17px] leading-relaxed font-medium text-ink">Want goed dakwerk maak je niet alleen, dat doe je samen!</p>')
     body = (f'<section class="sec-pad bg-surface"><div class="site-hero over-ons-hero">'
-      f'<p class="over-kicker flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>Over Johnny</p>'
-      f'<h1 class="over-title mt-1 font-serif text-[clamp(2rem,5vw,3.35rem)] font-semibold leading-[1.05] tracking-tight text-ink">Johnny van Ophuizen</h1>'
-      f'<p class="over-sub mt-2 font-serif text-lg text-brand md:text-2xl">Geboren en getogen in Deventer</p>'
-      f'<div class="over-photo-wrap"><div class="over-photo-in r-img shadow-md"><img src="/img/johnny.jpg" alt="Johnny van Ophuizen, dakdekker actief in heel Nederland" loading="eager" width="320" height="400"/></div></div>'
-      f'<p class="over-quote mt-2 max-w-2xl text-[17px] leading-relaxed text-muted md:mt-0">“Dakdekken is mijn lust en mijn leven. Met ruim 20 jaar ervaring in dakbedekking zorg ik ervoor dat uw dak weer jarenlang bestand is tegen alle weersinvloeden.”</p></div></section>'
+      f'<p class="over-kicker flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>Over ons</p>'
+      f'<h1 class="over-title mt-1 font-serif text-[clamp(1.8rem,4.45vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink">Even voorstellen: Johnny</h1>'
+      f'<div class="over-photo-wrap"><div class="over-photo-in r-img shadow-md"><img src="/img/johnny.jpg" alt="Johnny van Ophuizen met het team van Johnny\u2019s Dakwerken" loading="eager" width="320" height="400"/></div></div>'
+      f'<div class="over-intro mt-2 flex flex-col gap-4 max-w-2xl">{intro}</div></div></section>'
       f'<section class="sec-pad px-5"><div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:gap-16"><div>'
-      f'<h2 class="font-serif text-[clamp(1.6rem,3.6vw,2.4rem)] font-semibold leading-tight text-ink">Kwaliteit en service staan bij mij hoog in het vaandel</h2>'
-      f'<p class="mt-4 text-[17px] leading-relaxed text-muted">Johnny’s Dakwerken is gespecialiseerd in dakbedekking. Voor bitumineuze en kunststof dakbedekking bent u bij mij aan het juiste adres. Wanneer uw dak aan vervanging toe is of wanneer u een lekkage heeft, neem dan contact op. Ik kom zo spoedig mogelijk bij u langs met een vakkundige oplossing.</p>'
-      f'<p class="mt-4 text-[17px] leading-relaxed text-muted">Door mijn brede en jarenlange kennis en ervaring kan ik u voor elke ondergrond een bijpassend daksysteem adviseren.</p></div>'
-      f'<div class="r-card border border-line bg-card p-6 md:p-8"><h3 class="font-serif text-xl font-semibold text-ink">De materialen waarmee wij werken</h3><ul class="mt-5 flex flex-wrap gap-2.5">{mats}</ul>'
+      f'<h2 class="font-serif text-[clamp(1.45rem,3.2vw,2.15rem)] font-medium leading-tight text-ink">Johnny van Ophuizen</h2>'
+      f'<p class="mt-3 text-[17px] leading-relaxed text-muted">Geboren en getogen in Deventer, actief in heel Nederland. Johnny\u2019s Dakwerken is gespecialiseerd in dakbedekking: van bitumen en kunststof tot pannendaken en zinkwerk.</p>'
+      f'<p class="mt-4 text-[17px] leading-relaxed text-muted">Wanneer uw dak aan vervanging toe is of u een lekkage heeft, neem contact op. Wij komen zo spoedig mogelijk bij u langs met een vakkundige oplossing en adviseren per ondergrond een passend daksysteem.</p></div>'
+      f'<div class="r-card border border-line bg-card p-6 md:p-8"><h3 class="font-serif text-xl font-medium text-ink">De materialen waarmee wij werken</h3><ul class="mt-5 flex flex-wrap gap-2.5">{mats}</ul>'
       f'<div class="mt-8">{stats()}</div></div></div></section>'
       f'{MATERIEEL}{cta_band("Even kennismaken?", "Bel of mail ons. Een inspectie is vrijblijvend.")}')
-    page("/over-ons/", "Over Johnny van Ophuizen, dakdekker | Johnny's Dakwerken",
-         "Maak kennis met Johnny van Ophuizen: actief in heel Nederland vanuit Deventer, ruim 20 jaar ervaring in dakbedekking. Kwaliteit en service staan voorop.", body, "/over-ons/")
+    page("/over-ons/", "Over Johnny en het team | Johnny's Dakwerken",
+         "Even voorstellen: Johnny en zijn team van ervaren vakmensen. Johnny's Dakwerken is actief in heel Nederland vanuit Deventer, met ruim 20 jaar ervaring in dakbedekking.", body, "/over-ons/")
 
 def projecten():
     P = {"bit": ("bitumen", "Bitumineuze dakbedekking"), "zin": ("zinkwerk", "Lood- en zinkwerk"), "pan": ("pannendaken", "Pannendaken"), "pvc": ("kunststof", "Kunststof dakbedekking")}

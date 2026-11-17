@@ -23,8 +23,13 @@
   html{scroll-behavior:smooth;overflow-x:clip;scroll-padding-top:var(--header-h,4rem)}
   body{color:var(--color-ink);background:var(--color-surface);font-family:var(--font-sans);font-size:18.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
   a{color:inherit;text-decoration:none}
-  h1,h2,h3{font-family:var(--font-serif);font-weight:700}
+  h1,h2,h3{font-family:var(--font-serif);font-weight:500}
 }
+/* Display headings: light weight, slightly reduced optical size */
+main :is(h1,h2,h3).font-serif{font-weight:500}
+main :is(h1,h2,h3).font-serif.font-semibold,main :is(h1,h2,h3).font-serif.font-bold{font-weight:500}
+.hero-stats dt{font-weight:500!important}
+main h3.font-serif{font-weight:500}
 
 /* ---------- shape + role tokens (default = Ambachtelijk) ---------- */
 :root{--lime:#9be22b;--logo-j:#2a2622;--logo-d:#46701a;--r-card:3px;--r-btn:3px;--r-img:2px;--r-big:3px;--r-sm:3px;--r-num:2px;--btn-tr:uppercase;--btn-ls:.06em}
@@ -78,11 +83,11 @@ html[data-style="nacht"] .r-btn{transform:skewX(-12deg);font-weight:800;font-siz
 html[data-style="nacht"] .r-btn .btn-in{transform:skewX(12deg)}
 html[data-style="nacht"] .r-btn.bg-accent{background:var(--lime);color:#0b0b0c}
 html[data-style="nacht"] .r-card,html[data-style="nacht"] .r-img{box-shadow:none;outline:0}
-html[data-style="nacht"] h1,html[data-style="nacht"] h2,html[data-style="nacht"] h3{font-style:italic;font-weight:800}
-html[data-style="nacht"] h1 em{font-weight:900;font-style:italic;color:var(--lime);-webkit-text-fill-color:var(--lime);background:none}
+html[data-style="nacht"] h1,html[data-style="nacht"] h2,html[data-style="nacht"] h3{font-style:italic;font-weight:600;font-stretch:normal}
+html[data-style="nacht"] h1 em{font-weight:600;font-style:italic;color:var(--lime);-webkit-text-fill-color:var(--lime);background:none}
 html[data-style="nacht"] .kick-bar{height:12px;width:34px;border-radius:0}
 html[data-style="nacht"] p.uppercase{letter-spacing:.26em;font-family:"Exo 2",system-ui,sans-serif;font-weight:700}
-html[data-style="nacht"] #menu a.font-serif{font-style:italic;font-weight:800}
+html[data-style="nacht"] #menu a.font-serif{font-style:italic;font-weight:600}
 html[data-style="nacht"] .r-img img{filter:saturate(1.05) contrast(1.03)}
 
 /* ================= NACHT: gradients, silver, glow, swoosh ================= */
@@ -129,11 +134,11 @@ html[data-style="strak"]{
 }
 html[data-style="strak"] body{font-size:16.5px;background:#0a0a0b}
 html[data-style="strak"] h1,html[data-style="strak"] h2,html[data-style="strak"] h3{
-  font-family:"Exo 2",system-ui,sans-serif;font-stretch:expanded;font-style:italic;font-weight:800;
-  text-transform:uppercase;letter-spacing:.03em;line-height:1.02;
+  font-family:"Exo 2",system-ui,sans-serif;font-stretch:normal;font-style:italic;font-weight:600;
+  text-transform:uppercase;letter-spacing:.025em;line-height:1.04;
   background:none!important;-webkit-text-fill-color:#eef1f4!important;color:#eef1f4!important;
 }
-html[data-style="strak"] h1 em,html[data-style="strak"] h2 em{font-style:italic;font-weight:900;color:var(--lime)!important;-webkit-text-fill-color:var(--lime)!important}
+html[data-style="strak"] h1 em,html[data-style="strak"] h2 em{font-style:italic;font-weight:600;color:var(--lime)!important;-webkit-text-fill-color:var(--lime)!important}
 html[data-style="strak"] header.site-h{background:rgba(10,10,11,.97);border-bottom:0;box-shadow:inset 0 -3px 0 var(--lime),0 6px 24px -10px rgba(0,0,0,.4)}
 html[data-style="strak"] .r-btn{transform:skewX(-10deg);font-family:"Exo 2",system-ui,sans-serif;font-weight:800;font-size:14px}
 html[data-style="strak"] .r-btn .btn-in{transform:skewX(10deg)}
@@ -153,7 +158,7 @@ html[data-style="strak"] .r-big{
 }
 html[data-style="strak"] .kick-bar{background:var(--lime);width:44px;height:6px;transform:skewX(-22deg);border-radius:0}
 html[data-style="strak"] p.uppercase{letter-spacing:.22em;font-family:"Exo 2",system-ui,sans-serif;font-weight:700;font-size:12px}
-html[data-style="strak"] #menu a.font-serif{font-family:"Exo 2",system-ui,sans-serif;font-style:italic;font-weight:800}
+html[data-style="strak"] #menu a.font-serif{font-family:"Exo 2",system-ui,sans-serif;font-style:italic;font-weight:600}
 html[data-style="strak"] footer.site-f{background:#060607;border-top:6px solid var(--lime);clip-path:none;padding-top:2.5rem}
 html[data-style="strak"] footer.site-f::before{display:none}
 html[data-style="strak"] main>section:first-child{background:#0a0a0b;clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),0 100%);padding-bottom:calc(2.75rem + 28px);overflow:hidden}
@@ -428,8 +433,7 @@ html[data-style="strak"] .dienst-hero-solo .text-muted{color:#b8bec6}
   .over-photo-in{max-height:none;aspect-ratio:3/4}
   .over-kicker{grid-column:2}
   .over-title{grid-column:2}
-  .over-sub{grid-column:2}
-  .over-quote{grid-column:2}
+  .over-intro{grid-column:2}
 }
 /* Projecten: compact 2-col on phone */
 .projecten-grid{gap:.65rem}
