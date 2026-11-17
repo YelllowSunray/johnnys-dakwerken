@@ -79,12 +79,7 @@ BRUIN_MARK = ('<span class="logo-bruin" aria-hidden="true">'
               '<span class="logo-bruin-type">Johnny\u2019s<span>Dakwerken</span></span></span>')
 
 def logo(dark=False):
-    """Real logo (keyed from Johnny's flat logo). Header swaps variant per style; menu/footer are always dark."""
-    if dark:
-        return f'<span class="logo-mark"><img class="logo-img logo-fixed" src="/img/logo-dk.webp" width="1020" height="442" alt="Johnny\u2019s Dakwerken"/>{BRUIN_MARK}</span>'
-    return ('<span class="logo-mark">'
-            '<img class="logo-img logo-lt" src="/img/logo-lt.webp" width="1020" height="442" alt="Johnny\u2019s Dakwerken" fetchpriority="high"/>'
-            f'<img class="logo-img logo-dk" src="/img/logo-dk.webp" width="1020" height="442" alt="Johnny\u2019s Dakwerken"/>{BRUIN_MARK}</span>')
+    return f'<span class="logo-mark">{BRUIN_MARK}</span>'
 
 def header(active):
     items = []
@@ -96,7 +91,7 @@ def header(active):
     for href, label in NAV:
         mm.append(f'<a class="flex items-center justify-between border-b border-white/10 py-3 font-serif text-[24px] font-semibold text-white" href="{href}">{label}<span class="text-xl text-white/40">→</span></a>')
     return (f'<header class="site-h sticky top-0 z-40 border-b border-line bg-surface/95 backdrop-blur-md"><div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 lg:h-[72px]">'
-            f'<a class="brand-lockup flex min-w-0 items-center gap-2 sm:gap-2.5" href="/">{logo()}<span class="brand-tag"><span class="brand-tag-full">Dakdekker · Heel Nederland</span><span class="brand-tag-bruin">HEEL Nederland</span></span></a>'
+            f'<a class="brand-lockup flex min-w-0 items-center gap-2 sm:gap-2.5" href="/" aria-label="Johnny\u2019s Dakwerken">{logo()}<span class="brand-tag"><span class="brand-tag-full">Dakdekker · Heel Nederland</span><span class="brand-tag-bruin">HEEL Nederland</span></span></a>'
             f'<nav class="hidden items-center gap-5 xl:gap-7 lg:flex" aria-label="Hoofdmenu">{nav}'
             f'<a class="inline-flex h-11 items-center justify-center r-btn bg-accent px-5 text-[15px] font-semibold text-white shadow-[0_10px_30px_-10px_#2d6a4f] transition hover:-translate-y-0.5" href="/offerte/"><span class="btn-in">Offerte</span></a></nav>'
             f'<button type="button" id="menu-open" aria-controls="menu" aria-expanded="false" aria-label="Menu openen" class="burger-btn lg:hidden"><span class="burger" aria-hidden="true"><i></i><i></i></span></button></div></header>'
@@ -141,6 +136,7 @@ def page(path, title, desc, body, active="", breadcrumb_parts=None):
     out = (f'<!DOCTYPE html><html lang="nl" data-style="bruin"{home_attr}><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="icon" href="/favicon.svg?v=bruin" type="image/svg+xml"/><link rel="icon" href="/favicon-32.png?v=bruin" sizes="32x32" type="image/png"/><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=bruin"/>'
            f'<title>{esc(title)}</title><meta name="description" content="{esc(desc)}"/><meta name="robots" content="noindex"/>'
            f'<meta property="og:title" content="{esc(title)}"/><meta property="og:description" content="{esc(desc)}"/><meta property="og:locale" content="nl_NL"/>'
+           f'<meta property="og:image" content="https://johnnydakwerken.vercel.app/img/og.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="1200"/><meta property="og:image:alt" content="Johnny&#x27;s Dakwerken"/>'
            f'<meta name="theme-color" content="#070707"/>'
            f'{org_ld()}{ld}'
            f'{FONT_PRELOAD}'
