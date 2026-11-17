@@ -120,22 +120,12 @@ def footer():
             f'<li><a class="inline-block py-1.5 hover:text-white" href="{EMAIL_MAILTO}">{EMAIL}</a></li><li class="py-1.5">Postbus 101<br/>7450 AC Holten</li><li class="py-1.5">KvK 67684351</li></ul></div></div>'
             f'<div class="mt-12 flex items-center justify-between gap-4 border-t border-white/15 pt-6 text-sm text-slate-400"><p>© 2026 Johnny van Ophuizen</p><a class="hover:text-white" href="https://samirdev.com" target="_blank" rel="noopener noreferrer">made by SamirDev</a></div></div></footer>')
 
-DOCK = ('<div class="style-switch-dock" aria-live="polite"><p class="style-switch-dock-label">STIJLSELECTOR</p>'
-        '<div class="style-switch-dock-options" role="radiogroup" aria-label="Stijlselector">'
-        '<button type="button" role="radio" aria-checked="false" data-style-option="strak" class="style-switch-dock-btn">Strak</button>'
-        '<button type="button" role="radio" aria-checked="true" data-style-option="bruin" class="style-switch-dock-btn is-active">Bruin</button>'
-        '<button type="button" role="radio" aria-checked="false" data-style-option="ambachtelijk" class="style-switch-dock-btn">Ambachtelijk</button></div></div>')
-
-STYLE_BOOT = r"""(function(){var h=document.documentElement,TC={bruin:"#070707",strak:"#0a0a0b",ambachtelijk:"#17191b"},F={ambachtelijk:["playfair","sourcesans","exo2-italic"],bruin:["montserrat","montserrat-500","montserrat-700"],strak:["exo2","exo2-italic","07c7676b89ed2778-s.p.2bn3s6zvc0dyp"]};function lime(v){return v!=="ambachtelijk"&&v!=="bruin"}function apply(v){h.setAttribute("data-style",v);if(lime(v))h.setAttribute("data-lime","");else h.removeAttribute("data-lime");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",TC[v]||TC.bruin);(F[v]||F.bruin).forEach(function(f){var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="/fonts/"+f+".woff2";document.head.appendChild(l)})}var v="bruin";try{var q=new URLSearchParams(location.search).get("style"),k="jd-style";v=q||localStorage.getItem(k)||"bruin";if(v==="nacht")v="bruin";if(!/^(ambachtelijk|bruin|strak)$/.test(v))v="bruin";if(q||v==="bruin")localStorage.setItem(k,v)}catch(e){v="bruin"}apply(v)})();"""
+FONT_PRELOAD = (
+    '<link rel="preload" href="/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin/>'
+    '<link rel="preload" href="/fonts/montserrat-500.woff2" as="font" type="font/woff2" crossorigin/>'
+    '<link rel="preload" href="/fonts/montserrat-700.woff2" as="font" type="font/woff2" crossorigin/>')
 
 JS = """<script>
-(function(){var h=document.documentElement,b=document.querySelectorAll('[data-style-option]'),TC={bruin:'#070707',strak:'#0a0a0b',ambachtelijk:'#17191b'};
-function lime(v){return v!=='ambachtelijk'&&v!=='bruin'}
-function mark(v){b.forEach(function(x){var on=x.getAttribute('data-style-option')===v;x.classList.toggle('is-active',on);x.setAttribute('aria-checked',on?'true':'false')});var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',TC[v]||TC.bruin)}
-mark(h.getAttribute('data-style')||'bruin');
-b.forEach(function(x){x.addEventListener('click',function(){var v=x.getAttribute('data-style-option');h.setAttribute('data-style',v);if(lime(v))h.setAttribute('data-lime','');else h.removeAttribute('data-lime');try{localStorage.setItem('jd-style',v)}catch(e){}mark(v)})})})();
-</script>
-<script>
 (function(){var m=document.getElementById('menu'),o=document.getElementById('menu-open'),c=document.getElementById('menu-close');
 function s(v){m.classList.toggle('hidden',!v);m.classList.toggle('flex',v);document.documentElement.style.overflow=v?'hidden':'';o.setAttribute('aria-expanded',v?'true':'false');if(v){requestAnimationFrame(function(){requestAnimationFrame(function(){c.classList.add('on')})})}else{c.classList.remove('on')}}
 if(o){o.addEventListener('click',function(){s(true)});c.addEventListener('click',function(){s(false)});m.addEventListener('click',function(e){if(e.target.closest('a'))s(false)});document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false)})}
@@ -153,8 +143,8 @@ def page(path, title, desc, body, active="", breadcrumb_parts=None):
            f'<meta property="og:title" content="{esc(title)}"/><meta property="og:description" content="{esc(desc)}"/><meta property="og:locale" content="nl_NL"/>'
            f'<meta name="theme-color" content="#070707"/>'
            f'{org_ld()}{ld}'
-           f'<script>{STYLE_BOOT}</script>'
-           f'<link rel="stylesheet" href="/assets/app.css"/></head><body>{header(active)}<main>{body}</main>{footer()}{DOCK}{JS}<script src="/motion.js" defer></script></body></html>')
+           f'{FONT_PRELOAD}'
+           f'<link rel="stylesheet" href="/assets/app.css"/></head><body>{header(active)}<main>{body}</main>{footer()}{JS}<script src="/motion.js" defer></script></body></html>')
     import re as _re
     if path == '/':
         out = _re.sub(r'(<main><section[^>]*>)', lambda m: m.group(1) + FX_HOME, out, count=1)
