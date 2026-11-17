@@ -140,7 +140,7 @@ b.forEach(function(x){x.addEventListener('click',function(){var v=x.getAttribute
 function s(v){m.classList.toggle('hidden',!v);m.classList.toggle('flex',v);document.documentElement.style.overflow=v?'hidden':'';o.setAttribute('aria-expanded',v?'true':'false');if(v){requestAnimationFrame(function(){requestAnimationFrame(function(){c.classList.add('on')})})}else{c.classList.remove('on')}}
 if(o){o.addEventListener('click',function(){s(true)});c.addEventListener('click',function(){s(false)});m.addEventListener('click',function(e){if(e.target.closest('a'))s(false)});document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false)})}
 var f=document.getElementById('offerte-form');
-if(f){f.addEventListener('submit',function(e){e.preventDefault();var d=new FormData(f);var t='Offerte-aanvraag\\n\\nNaam: '+d.get('naam')+'\\nTelefoon: '+d.get('tel')+'\\nAdres/plaats: '+d.get('adres')+'\\nOnderwerp: '+d.get('dienst')+'\\n\\nOmschrijving:\\n'+d.get('bericht');window.location.href='mailto:info@johnnydakwerken.nl?subject='+encodeURIComponent('Offerte-aanvraag')+'&body='+encodeURIComponent(t)})}
+if(f){f.addEventListener('submit',function(e){e.preventDefault();var d=new FormData(f);var t='Offerte-aanvraag\\n\\nNaam: '+d.get('naam')+'\\nE-mail: '+d.get('email')+'\\nTelefoon: '+d.get('tel')+'\\nAdres/plaats: '+d.get('adres')+'\\nOnderwerp: '+d.get('dienst')+'\\n\\nOmschrijving:\\n'+d.get('bericht');window.location.href='mailto:info@johnnydakwerken.nl?subject='+encodeURIComponent('Offerte-aanvraag')+'&body='+encodeURIComponent(t)})}
 })();
 </script>"""
 
@@ -246,12 +246,13 @@ def page_head(kicker, h1, intro):
             f'<h1 class="mt-4 max-w-3xl font-serif text-[clamp(1.9rem,4.45vw,3.2rem)] font-semibold leading-[1.05] tracking-tight text-ink">{h1}</h1>'
             f'<p class="mt-5 max-w-2xl text-[clamp(17px,1.4vw,19px)] leading-relaxed text-muted">{intro}</p></div></section>')
 
-MATERIEEL = ('<section class="sec-pad px-5"><div class="site-hero"><div class="r-big border border-line bg-card p-7 md:p-10"><div class="grid items-center gap-6 md:grid-cols-[1.3fr_1fr]">'
+MATERIEEL = ('<section class="sec-pad px-5"><div class="site-hero"><div class="r-big border border-line bg-card p-7 md:p-10">'
   '<div><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Eigen materieel</p><h2 class="mt-3 font-serif text-[clamp(1.35rem,2.85vw,1.95rem)] font-semibold leading-tight text-ink">Uitgerust voor het werk</h2>'
-  '<p class="mt-3 text-[17px] text-muted">Naast vakmanschap heeft Johnny\'s Dakwerken ook eigen materieel: een ladderlift en een aanhanger met onze reclame erop.</p></div>'
-  '<ul class="grid gap-3 sm:grid-cols-2 md:grid-cols-1">'
-  '<li class="flex items-center gap-4 r-img bg-surface p-4"><span class="grid h-12 w-12 shrink-0 place-items-center r-sm bg-accent text-white"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 3v18M17 3v18M7 7h10M7 12h10M7 17h10"/></svg></span><span class="font-semibold text-ink">Ladderlift</span></li>'
-  '<li class="flex items-center gap-4 r-img bg-surface p-4"><span class="grid h-12 w-12 shrink-0 place-items-center r-sm bg-accent text-white"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 7h14v9H2zM16 10h4l2 3v3h-6"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></span><span class="font-semibold text-ink">Aanhanger</span></li></ul></div></div></div></section>')
+  '<p class="mt-3 max-w-2xl text-[17px] text-muted">Naast vakmanschap heeft Johnny\'s Dakwerken ook eigen materieel: een ladderlift en een aanhanger.</p></div>'
+  '<div class="mt-8 grid gap-4 sm:grid-cols-2">'
+  '<figure><div class="relative aspect-[16/9] overflow-hidden r-img bg-band"><img src="/img/ladderlift.jpg" alt="Ladderlift van Johnny\'s Dakwerken" loading="lazy" width="1024" height="768" class="absolute inset-0 h-full w-full object-cover" style="object-position:50% 42%"/></div><figcaption class="mt-3 font-semibold text-ink">Ladderlift</figcaption></figure>'
+  '<figure><div class="relative aspect-[16/9] overflow-hidden r-img bg-band"><img src="/img/aanhanger.jpg" alt="Aanhanger van Johnny\'s Dakwerken achter de bus" loading="lazy" width="1024" height="576" class="absolute inset-0 h-full w-full object-cover" style="object-position:50% 50%"/></div><figcaption class="mt-3 font-semibold text-ink">Aanhanger</figcaption></figure>'
+  '</div></div></div></section>')
 
 def stats(wide=False):
     items = [("20+", "Jaar ervaring"), ("NL", "Heel Nederland · vanuit Deventer")]
@@ -271,7 +272,7 @@ def home():
            ("Spoed bij lekkage", "Bij lekkage of schade komen wij zo spoedig mogelijk bij u langs."),
            ("Vrijblijvende inspectie", "Wij bekijken uw dak ter plekke en adviseren u eerlijk.")]
     whyh = "".join(f'<li class="r-card border border-line bg-card p-6"><h3 class="font-serif text-lg font-semibold text-ink">{esc(a)}</h3><p class="mt-2 text-[15.5px] leading-relaxed text-muted">{esc(b)}</p></li>' for a, b in why)
-    body = (f'<section class="overflow-hidden bg-surface pb-12 pt-6 lg:pb-20 lg:pt-10"><div class="hero-grid site-hero grid items-center gap-6 lg:grid-cols-2 lg:gap-16"><div class="hero-tx min-w-0">'
+    body = (f'<section class="home-hero overflow-hidden bg-surface pb-12 pt-6 lg:pb-20 lg:pt-10"><div class="hero-grid site-hero grid items-center gap-6 lg:grid-cols-2 lg:gap-16"><div class="hero-tx min-w-0">'
       f'<p class="mb-4 flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>Dakdekker in heel Nederland</p>'
       f'<h1 class="font-serif text-[clamp(2rem,4.65vw,3.75rem)] font-medium leading-[1.04] tracking-tight text-ink">Uw dak, <em class="font-medium not-italic text-brand">weer jarenlang waterdicht</em></h1>'
       f'<p class="mt-4 max-w-[540px] text-[17px] leading-snug text-muted lg:hidden">Bitumen, kunststof, leien, pannendaken en zinkwerk. Bij lekkage komen wij zo snel mogelijk bij u langs.</p>'
@@ -288,7 +289,7 @@ def home():
       f'<p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Aan het werk</p><h2 class="mt-3 font-serif text-[clamp(1.55rem,3.55vw,2.45rem)] font-semibold leading-tight text-ink">Vakwerk op uw dak</h2>'
       f'<p class="mt-4 max-w-md text-lg text-muted">Johnny\'s Dakwerken pakt het dakwerk aan met vakkennis en eigen materieel. Vraag een offerte aan of bel voor een vrijblijvende inspectie.</p><div class="mt-6">{hero_cta()}</div></div><div>{roofer_art()}</div></div></section>'
       f'<section class="sec-pad border-y border-line bg-band px-5"><div class="mx-auto grid max-w-6xl items-center gap-6 md:grid-cols-[auto_1fr] md:gap-14">'
-      f'<div class="relative aspect-[4/5] w-full overflow-hidden r-img shadow-xl md:aspect-[3/4] md:w-[260px]"><img src="/img/johnny.jpg?v=2" alt="Johnny van Ophuizen" loading="eager" class="absolute inset-0 h-full w-full object-cover" style="object-position:50% 42%"/></div>'
+      f'<div class="johnny-shot relative aspect-[4/5] w-full overflow-hidden r-img shadow-xl md:aspect-[3/4] md:w-[260px]"><img src="/img/johnny.jpg?v=2" alt="Johnny van Ophuizen" loading="eager" class="absolute inset-0 h-full w-full object-cover" style="object-position:50% 42%"/></div>'
       f'<div><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Over ons</p>'
       f'<h2 class="mt-3 font-serif text-[clamp(1.55rem,3.55vw,2.45rem)] font-medium leading-tight text-ink">Even voorstellen: Johnny</h2>'
       f'<p class="mt-4 max-w-2xl text-lg text-muted">Met ruim +20 jaar ervaring in het dakdekkersvak weet Johnny als geen ander wat er komt kijken bij goed en vakkundig dakwerk. Samen met zijn team van ervaren vakmensen staat hij iedere dag klaar om kwaliteit en vakmanschap te leveren.</p>'
@@ -443,10 +444,11 @@ def offerte():
     body = (page_head("Offerte", "Vraag een vrijblijvende offerte aan", "Vul het formulier in: uw gegevens worden klaargezet in een e-mail aan Johnny's Dakwerken. Liever direct bellen of mailen? Zie rechts.") +
       f'<section class="sec-pad px-5"><div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.4fr_1fr]">'
       f'<form id="offerte-form" class="r-card border border-line bg-card p-6 md:p-8" autocomplete="on"><h2 class="font-serif text-2xl font-semibold text-ink">Uw gegevens</h2><div class="mt-6 grid gap-5 sm:grid-cols-2">'
-      f'<label class="block text-sm font-semibold text-ink">Naam<input required name="naam" class="{fld} h-12"/></label>'
-      f'<label class="block text-sm font-semibold text-ink">Telefoon<input required name="tel" type="tel" class="{fld} h-12"/></label>'
-      f'<label class="block text-sm font-semibold text-ink">Adres en plaats<input required name="adres" class="{fld} h-12"/></label>'
-      f'<label class="block text-sm font-semibold text-ink">Waar gaat het om?<select name="dienst" class="{fld} h-12">{opts}</select></label>'
+      f'<label class="block text-sm font-semibold text-ink">Naam<input required name="naam" autocomplete="name" class="{fld} h-12"/></label>'
+      f'<label class="block text-sm font-semibold text-ink">E-mail<input required name="email" type="email" autocomplete="email" class="{fld} h-12"/></label>'
+      f'<label class="block text-sm font-semibold text-ink">Telefoon<input required name="tel" type="tel" autocomplete="tel" class="{fld} h-12"/></label>'
+      f'<label class="block text-sm font-semibold text-ink">Adres en plaats<input required name="adres" autocomplete="street-address" class="{fld} h-12"/></label>'
+      f'<label class="block text-sm font-semibold text-ink sm:col-span-2">Waar gaat het om?<select name="dienst" class="{fld} h-12">{opts}</select></label>'
       f'<label class="block text-sm font-semibold text-ink sm:col-span-2">Omschrijving<textarea required name="bericht" rows="5" class="{fld} py-3"></textarea></label></div>'
       f'<button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 r-btn bg-accent px-7 text-base font-semibold text-white transition hover:-translate-y-0.5 sm:w-auto"><span class="btn-in">{MAIL_SVG}Verstuur per e-mail</span></button></form>'
       f'<aside class="h-fit r-card border border-line bg-card p-6 md:p-8"><h2 class="font-serif text-2xl font-semibold text-ink">Liever direct contact?</h2><p class="mt-3 text-[16px] text-muted">Lekkage of schade? Bel of mail ons. We komen zo spoedig mogelijk bij u langs.</p>'

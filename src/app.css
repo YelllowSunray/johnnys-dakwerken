@@ -354,8 +354,14 @@ html[data-lime] .pano-card .arc-m{display:block}
 html[data-lime] .arc-m path{opacity:.92}
 
 /* Lime home hero: mobile = solid copy block, then skyline band (no arc) */
-/* Site container: 20px gutter (mobile + desktop max-width). */
-.site-hero{width:100%;max-width:72rem;margin-inline:auto;padding-left:1.25rem;padding-right:1.25rem;box-sizing:border-box}
+/* Phone and laptop stay at 72rem. Larger screens keep that column and let photos run full-bleed. */
+:root{--site-max:72rem}
+@media(min-width:1800px){
+  :root{--site-max:96rem}
+}
+.site-hero{width:100%;max-width:var(--site-max);margin-inline:auto;padding-left:1.25rem;padding-right:1.25rem;box-sizing:border-box}
+header.site-h>.mx-auto.max-w-6xl,
+main .mx-auto.max-w-6xl{max-width:var(--site-max)}
 .dienst-hero-solo .hero-tx-only{max-width:42rem}
 @media(min-width:1024px){.dienst-hero-solo .hero-tx-only{max-width:46rem}}
 html[data-lime] .dienst-hero-solo{
@@ -630,8 +636,8 @@ html[data-style="bruin"] .text-brand{color:var(--bruin)}
 html[data-style="bruin"] .bg-band{background:var(--color-band);clip-path:none}
 @media(min-width:1024px){
   html[data-style="bruin"] main section.px-5>.mx-auto.max-w-6xl{
-    width:calc(min(72rem, 100vw) - 2.5rem);
-    max-width:calc(min(72rem, 100vw) - 2.5rem);
+    width:calc(min(var(--site-max), 100vw) - 2.5rem);
+    max-width:calc(min(var(--site-max), 100vw) - 2.5rem);
   }
 }
 @media(min-width:1024px){
@@ -673,5 +679,35 @@ html[data-style="bruin"] .fx .pano img{
   html[data-style="bruin"] .fx .pano::after{
     content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
     background:linear-gradient(180deg,#070707 0%,rgba(7,7,7,.88) 16%,rgba(7,7,7,.45) 32%,transparent 48%)!important;
+  }
+}
+
+/* Wider than a laptop: full-bleed photo and header, content stays a designed column. */
+@media(min-width:1800px){
+  :root{--header-h:4.75rem}
+  header.site-h>.mx-auto.max-w-6xl{
+    max-width:none;width:100%;height:var(--header-h);
+    padding-left:max(2.5rem,4.5vw);padding-right:max(2.5rem,4.5vw);
+  }
+  .logo-img{height:48px}
+  .home-hero .hero-grid{
+    max-width:none;width:100%;margin:0;
+    padding-left:max(2.5rem,4.5vw);padding-right:max(2.5rem,4.5vw);
+    grid-template-columns:minmax(0,40rem) 1fr;align-items:end;column-gap:3rem;
+  }
+  .home-hero h1{font-size:clamp(3.25rem,3.4vw,5.25rem);max-width:12em;line-height:1.02}
+  .home-hero .hero-tx>p{max-width:34rem;font-size:1.2rem;line-height:1.5}
+  html[data-style="bruin"] .fx .pano::after{
+    background:linear-gradient(90deg,#070707 0%,rgba(7,7,7,.92) 26%,rgba(7,7,7,.4) 44%,transparent 62%)!important;
+  }
+  html[data-lime] .pano::after{
+    background:linear-gradient(90deg,rgb(var(--sh)) 0,rgba(var(--sh),.94) 24%,rgba(var(--sh),.4) 42%,transparent 60%),linear-gradient(0deg,rgb(var(--sh)) 0,transparent 28%),linear-gradient(180deg,rgba(var(--sh),.55) 0,transparent 22%);
+  }
+}
+@media(min-width:1800px) and (min-height:900px){
+  .home-hero,html[data-style="bruin"] .home-hero{
+    min-height:min(calc(100svh - var(--header-h)),880px);
+    display:flex;align-items:flex-end;justify-content:flex-start;
+    padding-bottom:3.5rem;
   }
 }
