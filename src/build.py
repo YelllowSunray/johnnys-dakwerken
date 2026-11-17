@@ -118,7 +118,7 @@ def footer():
             f'<div><p class="text-sm font-semibold uppercase tracking-[0.14em] text-white">Pagina\'s</p><ul class="mt-3 text-[15.5px]">{pg}</ul></div>'
             f'<div><p class="text-sm font-semibold uppercase tracking-[0.14em] text-white">Contact</p><ul class="mt-3 text-[15.5px]"><li><a class="inline-block py-1.5 font-semibold text-white" href="{PHONE_TEL}">{PHONE_TXT}</a></li>'
             f'<li><a class="inline-block py-1.5 hover:text-white" href="{EMAIL_MAILTO}">{EMAIL}</a></li><li class="py-1.5">Postbus 101<br/>7450 AC Holten</li><li class="py-1.5">KvK 67684351</li></ul></div></div>'
-            f'<div class="mt-12 border-t border-white/15 pt-6 text-sm text-slate-400"><p>© 2026 Johnny van Ophuizen</p></div></div></footer>')
+            f'<div class="mt-12 flex items-center justify-between gap-4 border-t border-white/15 pt-6 text-sm text-slate-400"><p>© 2026 Johnny van Ophuizen</p><a class="hover:text-white" href="https://samirdev.com" target="_blank" rel="noopener noreferrer">made by SamirDev</a></div></div></footer>')
 
 DOCK = ('<div class="style-switch-dock" aria-live="polite"><p class="style-switch-dock-label">STIJLSELECTOR</p>'
         '<div class="style-switch-dock-options" role="radiogroup" aria-label="Stijlselector">'
@@ -201,11 +201,11 @@ def work_video():
     return ('<section class="sec-pad px-5"><div class="site-hero">'
             '<p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">In beweging</p>'
             '<h2 class="mt-3 font-serif text-[clamp(1.35rem,2.85vw,1.85rem)] font-semibold text-ink">Aan het werk: bitumen &amp; zinkwerk</h2>'
-            '<div class="work-vid-wrap mx-auto mt-6 max-w-[880px]">'
+            '<div class="work-vid-wrap mt-6 max-w-[880px]">'
             '<div class="work-vid relative overflow-hidden r-img bg-band">'
             '<video class="block aspect-video w-full object-cover" width="960" height="540" poster="/img/video-poster.webp" muted playsinline loop preload="metadata" data-work-video>'
             '<source src="/video/bitumen_zink.mp4" type="video/mp4"/></video></div>'
-            '<p class="work-vid-caption mt-3 px-2 text-[15px] leading-snug text-muted">Johnny\'s Dakwerken aan het werk: bitumen &amp; zinkwerk</p></div></div></section>')
+            '<p class="work-vid-caption mt-3 text-[15px] leading-snug text-muted">Johnny\'s Dakwerken aan het werk: bitumen &amp; zinkwerk</p></div></div></section>')
 
 def steps_html(steps):
     return "".join(f'<li class="r-card border border-line bg-card p-6"><span class="grid h-10 w-10 place-items-center r-num bg-accent font-serif text-lg font-semibold text-white">{i+1}</span>'
@@ -241,17 +241,17 @@ def org_ld():
     return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
 
 def page_head(kicker, h1, intro):
-    return (f'<section class="sec-pad bg-surface"><div class="site-hero">'
+    return (f'<section class="page-head sec-pad bg-surface"><div class="site-hero">'
             f'<p class="flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>{kicker}</p>'
             f'<h1 class="mt-4 max-w-3xl font-serif text-[clamp(1.9rem,4.45vw,3.2rem)] font-semibold leading-[1.05] tracking-tight text-ink">{h1}</h1>'
             f'<p class="mt-5 max-w-2xl text-[clamp(17px,1.4vw,19px)] leading-relaxed text-muted">{intro}</p></div></section>')
 
-MATERIEEL = ('<section class="sec-pad px-5"><div class="site-hero r-big border border-line bg-card p-7 md:p-10"><div class="grid items-center gap-6 md:grid-cols-[1.3fr_1fr]">'
+MATERIEEL = ('<section class="sec-pad px-5"><div class="site-hero"><div class="r-big border border-line bg-card p-7 md:p-10"><div class="grid items-center gap-6 md:grid-cols-[1.3fr_1fr]">'
   '<div><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Eigen materieel</p><h2 class="mt-3 font-serif text-[clamp(1.35rem,2.85vw,1.95rem)] font-semibold leading-tight text-ink">Uitgerust voor het werk</h2>'
   '<p class="mt-3 text-[17px] text-muted">Naast vakmanschap heeft Johnny\'s Dakwerken ook eigen materieel: een ladderlift en een aanhanger met onze reclame erop.</p></div>'
   '<ul class="grid gap-3 sm:grid-cols-2 md:grid-cols-1">'
   '<li class="flex items-center gap-4 r-img bg-surface p-4"><span class="grid h-12 w-12 shrink-0 place-items-center r-sm bg-accent text-white"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 3v18M17 3v18M7 7h10M7 12h10M7 17h10"/></svg></span><span class="font-semibold text-ink">Ladderlift</span></li>'
-  '<li class="flex items-center gap-4 r-img bg-surface p-4"><span class="grid h-12 w-12 shrink-0 place-items-center r-sm bg-accent text-white"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 7h14v9H2zM16 10h4l2 3v3h-6"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></span><span class="font-semibold text-ink">Aanhanger met onze reclame</span></li></ul></div></div></section>')
+  '<li class="flex items-center gap-4 r-img bg-surface p-4"><span class="grid h-12 w-12 shrink-0 place-items-center r-sm bg-accent text-white"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 7h14v9H2zM16 10h4l2 3v3h-6"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></span><span class="font-semibold text-ink">Aanhanger</span></li></ul></div></div></div></section>')
 
 def stats(wide=False):
     items = [("20+", "Jaar ervaring"), ("NL", "Heel Nederland · vanuit Deventer")]
@@ -288,7 +288,7 @@ def home():
       f'<p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Aan het werk</p><h2 class="mt-3 font-serif text-[clamp(1.55rem,3.55vw,2.45rem)] font-semibold leading-tight text-ink">Vakwerk op uw dak</h2>'
       f'<p class="mt-4 max-w-md text-lg text-muted">Johnny\'s Dakwerken pakt het dakwerk aan met vakkennis en eigen materieel. Vraag een offerte aan of bel voor een vrijblijvende inspectie.</p><div class="mt-6">{hero_cta()}</div></div><div>{roofer_art()}</div></div></section>'
       f'<section class="sec-pad border-y border-line bg-band px-5"><div class="mx-auto grid max-w-6xl items-center gap-6 md:grid-cols-[auto_1fr] md:gap-14">'
-      f'<div class="relative aspect-[4/5] w-full overflow-hidden r-img shadow-xl md:aspect-[3/4] md:w-[260px]"><img src="/img/johnny.jpg" alt="Johnny van Ophuizen" loading="eager" class="absolute inset-0 h-full w-full object-cover" style="object-position:50% 42%"/></div>'
+      f'<div class="relative aspect-[4/5] w-full overflow-hidden r-img shadow-xl md:aspect-[3/4] md:w-[260px]"><img src="/img/johnny.jpg?v=2" alt="Johnny van Ophuizen" loading="eager" class="absolute inset-0 h-full w-full object-cover" style="object-position:50% 42%"/></div>'
       f'<div><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Over ons</p>'
       f'<h2 class="mt-3 font-serif text-[clamp(1.55rem,3.55vw,2.45rem)] font-medium leading-tight text-ink">Even voorstellen: Johnny</h2>'
       f'<p class="mt-4 max-w-2xl text-lg text-muted">Met ruim +20 jaar ervaring in het dakdekkersvak weet Johnny als geen ander wat er komt kijken bij goed en vakkundig dakwerk. Samen met zijn team van ervaren vakmensen staat hij iedere dag klaar om kwaliteit en vakmanschap te leveren.</p>'
@@ -354,7 +354,13 @@ def dienst(d):
     g = d.get("gallery") or []
     if g:
         spans = ["lg:col-span-2"] * 3 + ["lg:col-span-3"] * 2 if len(g) == 5 else ["lg:col-span-2"] * len(g)
-        gi = "".join(f'<a class="gal group relative block aspect-[4/3] overflow-hidden r-img bg-band {sp}" href="{big}" target="_blank" rel="noopener"><img src="{sm}" alt="{esc(al)}" loading="eager" width="720" height="540" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"/></a>' for (sm, big, al), sp in zip(g, spans))
+        bits = []
+        for (sm, big, al), sp in zip(g, spans):
+            wide = "pan8" in big
+            frame = "aspect-[16/9] sm:col-span-2 lg:col-span-6" if wide else f"aspect-[4/3] {sp}"
+            dims = 'width="960" height="540"' if wide else 'width="720" height="540"'
+            bits.append(f'<a class="gal group relative block overflow-hidden r-img bg-band {frame}" href="{big}" target="_blank" rel="noopener"><img src="{sm}" alt="{esc(al)}" loading="eager" {dims} class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"/></a>')
+        gi = "".join(bits)
         gallery = (f'<section class="sec-pad px-5"><div class="site-hero"><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Foto\'s</p>'
                    f'<h2 class="mb-8 mt-3 font-serif text-[clamp(1.35rem,2.85vw,1.85rem)] font-semibold text-ink">Werk van Johnny\'s Dakwerken</h2><div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">{gi}</div></div></section>')
     blocks = ""
@@ -382,7 +388,7 @@ def werkwijze():
     pts = ["Ruim 20 jaar ervaring in dakbedekking", "Kwaliteit en service staan voorop", "Advies per ondergrond", "Spoed bij lekkage of schade", "Vrijblijvende inspectie"]
     ptsh = "".join(f'<li class="flex gap-3">{CHECK}<span class="text-[16px] text-ink">{p}</span></li>' for p in pts)
     body = (page_head("Werkwijze", "Zo werken wij", "Van uw eerste bericht tot een waterdicht dak: in vier stappen, zonder gedoe.") +
-      f'<section class="sec-pad px-5"><div class="site-hero"><ol class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{steps_html(long_steps)}</ol>'
+      f'<section class="steps-sec sec-pad px-5"><div class="site-hero"><ol class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{steps_html(long_steps)}</ol>'
       f'<div class="mt-12 overflow-hidden r-big"><div class="relative aspect-[16/9] w-full md:aspect-[21/8]"><img src="/img/panorama.jpg" alt="De IJssel en de skyline van Deventer" loading="eager" class="absolute inset-0 h-full w-full object-cover"/></div></div></div></section>'
       f'<section class="sec-pad border-y border-line bg-band px-5"><div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:gap-16"><div>{sec_head("Wat u mag verwachten", "Dakdekker voor heel Nederland")}'
       f'<p class="-mt-6 text-lg text-muted">Johnny\'s Dakwerken is actief door heel Nederland, met Deventer als vestiging. Voor bitumineuze en kunststof dakbedekking bent u bij ons aan het juiste adres.</p></div>'
@@ -401,7 +407,7 @@ def over():
     body = (f'<section class="sec-pad bg-surface"><div class="site-hero over-ons-hero">'
       f'<p class="over-kicker flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>Over ons</p>'
       f'<h1 class="over-title mt-1 font-serif text-[clamp(1.8rem,4.45vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink">Even voorstellen: Johnny</h1>'
-      f'<div class="over-photo-wrap"><div class="over-photo-in r-img shadow-md"><img src="/img/johnny.jpg" alt="Johnny van Ophuizen" loading="eager" width="320" height="400"/></div></div>'
+      f'<div class="over-photo-wrap"><div class="over-photo-in r-img shadow-md"><img src="/img/johnny.jpg?v=2" alt="Johnny van Ophuizen" loading="eager" width="320" height="400"/></div></div>'
       f'<div class="over-intro mt-2 flex flex-col gap-4 max-w-2xl">{intro}</div></div></section>'
       f'<section class="sec-pad px-5"><div class="mx-auto max-w-6xl">'
       f'<div class="r-card border border-line bg-card p-6 md:p-8"><h3 class="font-serif text-xl font-medium text-ink">De materialen waarmee wij werken</h3><ul class="mt-5 flex flex-wrap gap-2.5">{mats}</ul>'
@@ -417,7 +423,7 @@ def projecten():
         for sm, big, al in dd.get("gallery", []):
             ALT[big.split("/")[-1][:-5]] = al
     ALT.update({"bit2": "Bitumineuze dakbedekking met opstaande randen", "zin6": "Zinken dakbedekking met sluitnaden", "pan1": "Dakpannen met een zinken goot", "pvc1": "Wit PVC-dak met dakdoorvoeren"})
-    order = ["pvc1", "bit1", "zin6", "pan5", "bit3", "zin3", "pan3", "bit4"]
+    order = ["pvc1", "bit1", "zin6", "pan5", "bit3", "zin3", "bit4"]
     cards = ""
     for n in order:
         sl, lab = P[n[:3]]
@@ -454,7 +460,7 @@ def offerte():
 
 def contact():
     body = (page_head("Contact", "Neem contact op met Johnny's Dakwerken", "Bel of mail voor spoed, advies of een vrijblijvende offerte. Bij lekkage of schade komen wij zo spoedig mogelijk bij u langs.") +
-      f'<section class="sec-pad px-5"><div class="mx-auto grid max-w-6xl gap-5 md:grid-cols-3">'
+      f'<section class="contact-sec sec-pad px-5"><div class="mx-auto grid max-w-6xl gap-5 md:grid-cols-3">'
       f'<div class="r-card border border-line bg-card p-6 md:col-span-2 md:p-8"><h2 class="font-serif text-2xl font-semibold text-ink">Direct in contact</h2><p class="mt-3 max-w-xl text-[17px] text-muted">Vraag een offerte aan, bel ons of stuur een e-mail. Voeg gerust een foto van uw dak of de schade toe.</p><div class="mt-6">{contact_cta(dark=False)}</div>'
       f'<p class="mt-6 text-[16px] text-muted">Liever een offerte op schrift? <a class="font-semibold text-brand" href="/offerte/">Vraag een offerte aan →</a></p></div>'
       f'<div class="r-card border border-line bg-card p-6 md:p-8"><h2 class="font-serif text-2xl font-semibold text-ink">Gegevens</h2><dl class="mt-5 space-y-4 text-[16px]">'
