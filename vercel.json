@@ -1,15 +1,1 @@
-{
-  "buildCommand": "python3 src/build.py",
-  "installCommand": "npm install",
-  "outputDirectory": "dist",
-  "framework": null,
-  "trailingSlash": true,
-  "cleanUrls": false,
-  "redirects": [
-    {
-      "source": "/fotos/",
-      "destination": "/projecten/",
-      "permanent": true
-    }
-  ]
-}
+{"trailingSlash":true,"cleanUrls":false,"redirects":[{"source":"/fotos/","destination":"/projecten/","permanent":true}]}

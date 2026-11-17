@@ -7,19 +7,38 @@ ROOT = os.path.dirname(os.path.dirname(__file__))
 DIST = os.path.join(ROOT, "dist")
 esc = html.escape
 
-WA_SVG = '<svg class="h-[19px] w-[19px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>'
 TEL_SVG = '<svg class="h-[19px] w-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>'
+MAIL_SVG = '<svg class="h-[19px] w-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>'
 CHECK = '<svg class="mt-1 h-5 w-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
 ARROW = '<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 CHEV = '<svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>'
 
-BTN = "inline-flex h-12 items-center justify-center gap-2 r-btn px-4 text-base font-semibold text-white transition hover:-translate-y-0.5 sm:px-6"
-def pair(dark=False, wa_text=None):
-    href = WA + ("?text=" + wa_text if wa_text else "")
-    bel = ("border-2 border-white/60 bg-transparent" if dark else "bg-accent shadow-[0_10px_30px_-10px_#2d6a4f]")
-    return (f'<div class="hero-cta">'
-            f'<a class="{BTN} btn-wa" href="{href}"><span class="btn-in">{WA_SVG}WhatsApp</span></a>'
-            f'<a class="{BTN} {bel}" href="{PHONE_TEL}"><span class="btn-in">{TEL_SVG}Bel</span></a></div>')
+BTN = "inline-flex h-12 items-center justify-center gap-2 r-btn px-4 text-base font-semibold transition hover:-translate-y-0.5 sm:px-6"
+
+def hero_cta(dark=False):
+    if dark:
+        off = f"{BTN} bg-accent text-white"
+        bel = f"{BTN} border-2 border-white/60 bg-transparent text-white"
+    else:
+        off = f"{BTN} bg-accent text-white shadow-[0_10px_30px_-10px_#2d6a4f]"
+        bel = f"{BTN} border-2 border-accent bg-transparent text-brand"
+    return (f'<div class="hero-cta flex flex-wrap gap-3">'
+            f'<a class="{off}" href="/offerte/"><span class="btn-in">Offerte aanvragen</span></a>'
+            f'<a class="{bel}" href="{PHONE_TEL}"><span class="btn-in">{TEL_SVG}Bel</span></a></div>')
+
+def contact_cta(dark=True):
+    if dark:
+        off = f"{BTN} bg-accent text-white"
+        bel = f"{BTN} border-2 border-white/60 bg-transparent text-white"
+        em = f"{BTN} border-2 border-white/40 bg-transparent text-white"
+    else:
+        off = f"{BTN} bg-accent text-white shadow-[0_10px_30px_-10px_#2d6a4f]"
+        bel = f"{BTN} border-2 border-accent bg-transparent text-brand"
+        em = f"{BTN} border-2 border-line bg-card text-ink"
+    return (f'<div class="contact-cta flex flex-col gap-3 sm:flex-row sm:flex-wrap">'
+            f'<a class="{off}" href="/offerte/"><span class="btn-in">Offerte aanvragen</span></a>'
+            f'<a class="{bel}" href="{PHONE_TEL}"><span class="btn-in">{TEL_SVG}Bel</span></a>'
+            f'<a class="{em}" href="{EMAIL_MAILTO}"><span class="btn-in">{MAIL_SVG}E-mail</span></a></div>')
 
 def sec_head(kicker, h2, p=None, center=False):
     return (f'<div class="mb-10 max-w-2xl md:mb-12"><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">{kicker}</p>'
@@ -50,7 +69,7 @@ def cta_band(h="Lekkage, schade of een dak dat aan vervanging toe is?", p="Neem 
     return (f'<section class="cta-end px-5"><div class="site-hero"><div class="overflow-hidden r-big bg-dark px-6 py-10 md:px-12 md:py-14">'
             f'<div class="grid items-center gap-8 md:grid-cols-[1.4fr_1fr]"><div><h2 class="font-serif text-[clamp(1.6rem,3.6vw,2.4rem)] font-semibold leading-tight text-white">{h}</h2>'
             f'<p class="mt-3 max-w-xl text-[17px] text-slate-300">{p}</p></div>'
-            f'<div class="md:justify-self-end">{pair(dark=True)}</div></div></div></div></section>')
+            f'<div class="md:justify-self-end">{contact_cta(dark=True)}</div></div></div></div></section>')
 
 NAV = [("/", "Home"), ("/diensten/", "Diensten"), ("/werkwijze/", "Werkwijze"), ("/over-ons/", "Over ons"), ("/projecten/", "Projecten"), ("/contact/", "Contact")]
 
@@ -83,8 +102,9 @@ def header(active):
             f'<button type="button" id="menu-close" aria-label="Sluiten" class="burger-btn"><span class="burger" aria-hidden="true"><i></i><i></i></span></button></div>'
             f'<nav class="mt-2" aria-label="Mobiel menu">{"".join(mm)}</nav>'
             f'<a class="menu-offerte-cta mt-5 flex min-h-[48px] w-full max-w-full items-center justify-center r-btn bg-accent px-5 text-base font-semibold text-white" href="/offerte/"><span class="btn-in">Offerte</span></a>'
-            f'<div class="mt-auto pt-6"><div class="flex flex-nowrap gap-3"><a class="inline-flex h-12 flex-1 items-center justify-center gap-2 r-btn btn-wa text-base font-semibold text-white" href="{WA}"><span class="btn-in">{WA_SVG}WhatsApp</span></a>'
-            f'<a class="inline-flex h-12 flex-1 items-center justify-center gap-2 r-btn border-2 border-white/60 text-base font-semibold text-white" href="{PHONE_TEL}"><span class="btn-in">{TEL_SVG}Bel</span></a></div></div></div>')
+            f'<div class="mt-auto pt-6 flex flex-col gap-3">'
+            f'<a class="inline-flex h-12 w-full items-center justify-center gap-2 r-btn border-2 border-white/60 text-base font-semibold text-white" href="{PHONE_TEL}"><span class="btn-in">{TEL_SVG}Bel</span></a>'
+            f'<a class="inline-flex h-12 w-full items-center justify-center gap-2 r-btn border-2 border-white/40 text-base font-semibold text-white" href="{EMAIL_MAILTO}"><span class="btn-in">{MAIL_SVG}{EMAIL}</span></a></div></div>')
 
 def footer():
     ds = "".join(f'<li><a class="inline-block py-1.5 hover:text-white" href="/diensten/{d["slug"]}/">{esc(d["nav"])}</a></li>' for d in D)
@@ -93,7 +113,8 @@ def footer():
             f'<div><div class="flex items-center gap-2.5">{logo(True)}</div><p class="mt-3 max-w-xs text-[15.5px] leading-relaxed">Actief in heel Nederland, vanuit Deventer. Bitumen, kunststof, leien, zink en boeibekleding, met ruim 20 jaar ervaring.</p></div>'
             f'<div><p class="text-sm font-semibold uppercase tracking-[0.14em] text-white">Diensten</p><ul class="mt-3 text-[15.5px]">{ds}</ul></div>'
             f'<div><p class="text-sm font-semibold uppercase tracking-[0.14em] text-white">Pagina\'s</p><ul class="mt-3 text-[15.5px]">{pg}</ul></div>'
-            f'<div><p class="text-sm font-semibold uppercase tracking-[0.14em] text-white">Contact</p><ul class="mt-3 text-[15.5px]"><li><a class="inline-block py-1.5 font-semibold text-white" href="{PHONE_TEL}">{PHONE_TXT}</a></li><li class="py-1.5">Postbus 101<br/>7450 AC Holten</li><li class="py-1.5">KvK 67684351</li></ul></div></div>'
+            f'<div><p class="text-sm font-semibold uppercase tracking-[0.14em] text-white">Contact</p><ul class="mt-3 text-[15.5px]"><li><a class="inline-block py-1.5 font-semibold text-white" href="{PHONE_TEL}">{PHONE_TXT}</a></li>'
+            f'<li><a class="inline-block py-1.5 hover:text-white" href="{EMAIL_MAILTO}">{EMAIL}</a></li><li class="py-1.5">Postbus 101<br/>7450 AC Holten</li><li class="py-1.5">KvK 67684351</li></ul></div></div>'
             f'<div class="mt-12 border-t border-white/15 pt-6 text-sm text-slate-400"><p>© 2026 Johnny van Ophuizen</p></div></div></footer>')
 
 DOCK = ('<div class="style-switch-dock" aria-live="polite"><p class="style-switch-dock-label">STIJLSELECTOR</p>'
@@ -115,7 +136,7 @@ b.forEach(function(x){x.addEventListener('click',function(){var v=x.getAttribute
 function s(v){m.classList.toggle('hidden',!v);m.classList.toggle('flex',v);document.documentElement.style.overflow=v?'hidden':'';o.setAttribute('aria-expanded',v?'true':'false');if(v){requestAnimationFrame(function(){requestAnimationFrame(function(){c.classList.add('on')})})}else{c.classList.remove('on')}}
 if(o){o.addEventListener('click',function(){s(true)});c.addEventListener('click',function(){s(false)});m.addEventListener('click',function(e){if(e.target.closest('a'))s(false)});document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false)})}
 var f=document.getElementById('offerte-form');
-if(f){f.addEventListener('submit',function(e){e.preventDefault();var d=new FormData(f);var t='Offerte-aanvraag\\nNaam: '+d.get('naam')+'\\nTelefoon: '+d.get('tel')+'\\nAdres/plaats: '+d.get('adres')+'\\nOnderwerp: '+d.get('dienst')+'\\nOmschrijving: '+d.get('bericht');window.location.href='https://wa.me/31641723759?text='+encodeURIComponent(t)})}
+if(f){f.addEventListener('submit',function(e){e.preventDefault();var d=new FormData(f);var t='Offerte-aanvraag\\n\\nNaam: '+d.get('naam')+'\\nTelefoon: '+d.get('tel')+'\\nAdres/plaats: '+d.get('adres')+'\\nOnderwerp: '+d.get('dienst')+'\\n\\nOmschrijving:\\n'+d.get('bericht');window.location.href='mailto:info@johnnydakwerken.nl?subject='+encodeURIComponent('Offerte-aanvraag')+'&body='+encodeURIComponent(t)})}
 })();
 </script>"""
 
@@ -126,7 +147,7 @@ def page(path, title, desc, body, active="", breadcrumb_parts=None):
            f'<title>{esc(title)}</title><meta name="description" content="{esc(desc)}"/><meta name="robots" content="noindex"/>'
            f'<meta property="og:title" content="{esc(title)}"/><meta property="og:description" content="{esc(desc)}"/><meta property="og:locale" content="nl_NL"/>'
            f'<meta name="theme-color" content="#0a0a0b"/>'
-           f'{ld}'
+           f'{org_ld()}{ld}'
            f'<script>{STYLE_BOOT}</script>'
            f'<link rel="stylesheet" href="/assets/app.css"/></head><body>{header(active)}<main>{body}</main>{footer()}{DOCK}{JS}<script src="/motion.js" defer></script></body></html>')
     import re as _re
@@ -197,6 +218,23 @@ def breadcrumb_ld(parts):
     data = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items}
     return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
 
+def org_ld():
+    data = {
+        "@context": "https://schema.org",
+        "@type": "RoofingContractor",
+        "name": "Johnny's Dakwerken",
+        "url": SITE_ORIGIN,
+        "telephone": "+31641723759",
+        "email": "info@johnnydakwerken.nl",
+        "areaServed": {"@type": "Country", "name": "Netherlands"},
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Deventer",
+            "addressCountry": "NL",
+        },
+    }
+    return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
+
 def page_head(kicker, h1, intro):
     return (f'<section class="sec-pad bg-surface"><div class="site-hero">'
             f'<p class="flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>{kicker}</p>'
@@ -232,7 +270,7 @@ def home():
       f'<h1 class="font-serif text-[clamp(2.25rem,5.2vw,4.25rem)] font-semibold leading-[1.02] tracking-tight text-ink">Uw dak, <em class="font-semibold not-italic text-brand">weer jarenlang waterdicht</em></h1>'
       f'<p class="mt-4 max-w-[540px] text-[17px] leading-snug text-muted lg:hidden">Bitumen, kunststof, leien en zink. Bij lekkage komt Johnny zo snel mogelijk bij u langs.</p>'
       f'<p class="mt-5 hidden max-w-[540px] text-[clamp(17px,1.45vw,20px)] leading-snug text-muted lg:block">Johnny verzorgt bitumen, kunststof, leien, zink en boeibekleding. Bij lekkage of schade komt hij zo spoedig mogelijk bij u langs.</p>'
-      f'<div class="mt-6 lg:mt-8">{pair()}</div><div class="mt-8 hidden lg:block hero-stats-slot">{stats()}</div></div>'
+      f'<div class="mt-6 lg:mt-8">{hero_cta()}</div><div class="mt-8 hidden lg:block hero-stats-slot">{stats()}</div></div>'
       f'{hero_photo("/img/werk/bit1.webp", "Plat dak met nieuwe bitumineuze dakbedekking", "50% 50%", pano=True)}'
       f'</div></section>'
       f'<div class="hero-stats-after border-t border-line bg-surface px-5 py-4 lg:hidden"><div class="site-hero">{stats()}</div></div>'
@@ -242,7 +280,7 @@ def home():
       f'<p class="mt-8"><a class="inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-brand" href="/diensten/">Alle diensten bekijken {ARROW}</a></p></div></section>'
       f'<section class="roofer-sec sec-pad px-5"><div class="mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[1fr_1.2fr] md:gap-10"><div>'
       f'<p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Aan het werk</p><h2 class="mt-3 font-serif text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-tight text-ink">Vakwerk op uw dak</h2>'
-      f'<p class="mt-4 max-w-md text-lg text-muted">Johnny pakt het dakwerk aan met vakkennis en eigen materieel. Bel of app voor een vrijblijvende inspectie.</p><div class="mt-6">{pair()}</div></div><div>{roofer_art()}</div></div></section>'
+      f'<p class="mt-4 max-w-md text-lg text-muted">Johnny pakt het dakwerk aan met vakkennis en eigen materieel. Vraag een offerte aan of bel voor een vrijblijvende inspectie.</p><div class="mt-6">{hero_cta()}</div></div><div>{roofer_art()}</div></div></section>'
       f'<section class="sec-pad border-y border-line bg-band px-5"><div class="mx-auto grid max-w-6xl items-center gap-6 md:grid-cols-[auto_1fr] md:gap-14">'
       f'<div class="relative aspect-[4/5] w-full overflow-hidden r-img shadow-xl md:aspect-[3/4] md:w-[260px]"><img src="/img/johnny.jpg" alt="Johnny van Ophuizen" loading="eager" class="absolute inset-0 h-full w-full object-cover" style="object-position:50% 25%"/></div>'
       f'<div><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Over Johnny</p>'
@@ -267,7 +305,7 @@ def diensten():
     body = (f'<section class="sec-pad bg-surface"><div class="site-hero"><p class="flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>Diensten</p>'
       f'<h1 class="mt-4 max-w-3xl font-serif text-[clamp(2.1rem,5vw,3.6rem)] font-semibold leading-[1.05] tracking-tight text-ink">Alle dakwerk van Johnny, op één plek</h1>'
       f'<p class="mt-5 max-w-2xl text-[clamp(17px,1.4vw,19px)] leading-relaxed text-muted">Voor bitumineuze en kunststof dakbedekking bent u bij Johnny aan het juiste adres. Kies hieronder een dienst voor meer informatie.</p>'
-      f'<div class="mt-7">{pair()}</div></div></section>'
+      f'<div class="mt-7">{hero_cta()}</div></div></section>'
       f'<section class="sec-pad px-5"><div class="site-hero"><div class="diensten-grid grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{cards}{EXTRA}</div>'
       f'<div class="mt-10 flex flex-col gap-3 r-img border border-line bg-card p-6 md:flex-row md:items-center md:gap-6"><p class="font-semibold text-ink">Materialen waarmee Johnny werkt</p><ul class="flex flex-wrap gap-2">{mats}</ul></div></div></section>'
       f'{MATERIEEL}{cta_band("Weet u niet zeker welke dienst u nodig heeft?", "Stuur Johnny een bericht of bel hem. Hij adviseert per ondergrond een passend systeem.")}')
@@ -283,7 +321,7 @@ TITLES = {
  "isolatie": ("Dakisolatie plat dak | Johnny's Dakwerken", "Isolatie voor uw platte dak: warm dak, PUR, PIR, polystyreen en afschot-isolatie. Meer comfort en lagere stookkosten. Door heel Nederland."),
  "pannendaken": ("Pannendak dakdekker | Johnny's Dakwerken", "Ook pannendaken: Johnny bekijkt uw dak ter plekke en adviseert u. Vrijblijvende inspectie mogelijk, actief in heel Nederland."),
  "nieuwbouw-verbouw-renovatie": ("Dakwerk nieuwbouw, verbouw en renovatie | Johnny's Dakwerken", "Dakwerk bij nieuwbouw, verbouw en renovatie. Johnny heeft ruim 20 jaar ervaring en adviseert voor elke ondergrond een passend daksysteem."),
- "lekkage-en-reparatie": ("Lekkage dak: snel hulp | Johnny's Dakwerken", "Lekkage of schade aan uw dak? Johnny komt zo spoedig mogelijk bij u langs met een vakkundige oplossing. Door heel Nederland. Bel of app direct."),
+ "lekkage-en-reparatie": ("Lekkage dak: snel hulp | Johnny's Dakwerken", "Lekkage of schade aan uw dak? Johnny komt zo spoedig mogelijk bij u langs met een vakkundige oplossing. Door heel Nederland. Bel of mail direct."),
 }
 
 def dienst(d):
@@ -291,7 +329,7 @@ def dienst(d):
     hx = (f'<div class="hero-tx min-w-0"><p class="mb-3 flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand lg:mb-5"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>{esc(d["kicker"])}</p>'
           f'<h1 class="font-serif text-[clamp(2rem,5vw,3.75rem)] font-semibold leading-[1.04] tracking-tight text-ink">{esc(d["title"])}</h1>'
           f'<p class="mt-4 max-w-[540px] text-[17px] leading-snug text-muted lg:mt-5 lg:text-[19px] lg:max-w-2xl">{esc(d["intro"])}</p>'
-          f'<div class="mt-6 lg:mt-8">{pair()}</div></div>')
+          f'<div class="mt-6 lg:mt-8">{hero_cta()}</div></div>')
     if d.get("hero_text_only"):
         hero = (f'<section class="dienst-hero-solo overflow-hidden bg-surface pb-12 pt-6 lg:pb-16 lg:pt-10">'
                 f'<div class="site-hero hero-tx-only">{hx}</div></section>')
@@ -331,7 +369,7 @@ def dienst(d):
 
 def werkwijze():
     long_steps = [
-      ("U neemt contact op", "Stuur Johnny een WhatsApp-bericht of bel hem. Vertel kort wat er aan de hand is: een lekkage, schade, een dak dat aan vervanging toe is, of een nieuw project."),
+      ("U neemt contact op", "Bel Johnny, mail hem of vraag een offerte aan. Vertel kort wat er aan de hand is: een lekkage, schade, een dak dat aan vervanging toe is, of een nieuw project."),
       ("Johnny bekijkt uw dak", "Ter plekke wordt gekeken naar uw dak en de ondergrond. Heeft u een lekkage of schade, dan komt Johnny zo spoedig mogelijk bij u langs. Een inspectie is vrijblijvend."),
       ("U krijgt advies", "Door zijn brede en jarenlange kennis en ervaring adviseert Johnny voor elke ondergrond een bijpassend daksysteem, gebaseerd op een duurzame en waterdichte constructie."),
       ("Vakkundige uitvoering", "Het werk wordt vakkundig uitgevoerd, zodat uw dak weer jarenlang bestand is tegen alle weersinvloeden.")]
@@ -389,7 +427,7 @@ def projecten():
 def offerte():
     opts = "".join(f'<option>{esc(d["nav"])}</option>' for d in D) + "<option>Anders</option>"
     fld = "mt-1.5 block w-full r-sm border border-line bg-band px-4 text-[16px] text-ink outline-none focus:border-accent focus:ring-2 focus:ring-accent/20"
-    body = (page_head("Offerte", "Vraag een vrijblijvende offerte aan", "Vul het formulier in: uw gegevens worden klaargezet in een WhatsApp-bericht aan Johnny. Liever direct praten? Bel of app hem gerust.") +
+    body = (page_head("Offerte", "Vraag een vrijblijvende offerte aan", "Vul het formulier in: uw gegevens worden klaargezet in een e-mailbericht aan Johnny. Liever direct bellen of mailen? Zie rechts.") +
       f'<section class="sec-pad px-5"><div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.4fr_1fr]">'
       f'<form id="offerte-form" class="r-card border border-line bg-card p-6 md:p-8" autocomplete="on"><h2 class="font-serif text-2xl font-semibold text-ink">Uw gegevens</h2><div class="mt-6 grid gap-5 sm:grid-cols-2">'
       f'<label class="block text-sm font-semibold text-ink">Naam<input required name="naam" class="{fld} h-12"/></label>'
@@ -397,24 +435,28 @@ def offerte():
       f'<label class="block text-sm font-semibold text-ink">Adres en plaats<input required name="adres" class="{fld} h-12"/></label>'
       f'<label class="block text-sm font-semibold text-ink">Waar gaat het om?<select name="dienst" class="{fld} h-12">{opts}</select></label>'
       f'<label class="block text-sm font-semibold text-ink sm:col-span-2">Omschrijving<textarea required name="bericht" rows="5" class="{fld} py-3"></textarea></label></div>'
-      f'<button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 r-btn btn-wa px-7 text-base font-semibold text-white transition hover:-translate-y-0.5 sm:w-auto"><span class="btn-in">{WA_SVG}Verstuur via WhatsApp</span></button></form>'
-      f'<aside class="h-fit r-card border border-line bg-card p-6 md:p-8"><h2 class="font-serif text-2xl font-semibold text-ink">Direct contact</h2><p class="mt-3 text-[16px] text-muted">Lekkage of schade? Neem direct contact op, dan komt Johnny zo spoedig mogelijk bij u langs.</p><div class="mt-6">{pair()}</div>'
+      f'<button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 r-btn bg-accent px-7 text-base font-semibold text-white transition hover:-translate-y-0.5 sm:w-auto"><span class="btn-in">{MAIL_SVG}Verstuur per e-mail</span></button></form>'
+      f'<aside class="h-fit r-card border border-line bg-card p-6 md:p-8"><h2 class="font-serif text-2xl font-semibold text-ink">Liever direct contact?</h2><p class="mt-3 text-[16px] text-muted">Lekkage of schade? Bel of mail Johnny. Hij komt zo spoedig mogelijk bij u langs.</p>'
+      f'<div class="mt-6 flex flex-col gap-3 sm:flex-row"><a class="{BTN} bg-accent text-white shadow-[0_10px_30px_-10px_#2d6a4f]" href="{PHONE_TEL}"><span class="btn-in">{TEL_SVG}Bel {PHONE_TXT}</span></a>'
+      f'<a class="{BTN} border-2 border-accent bg-transparent text-brand" href="{EMAIL_MAILTO}"><span class="btn-in">{MAIL_SVG}E-mail</span></a></div>'
       f'<dl class="mt-8 space-y-4 border-t border-line pt-6 text-[16px]"><div><dt class="text-sm font-semibold text-ink">Telefoon</dt><dd><a class="inline-block py-1 text-brand" href="{PHONE_TEL}">{PHONE_TXT}</a></dd></div>'
+      f'<div><dt class="text-sm font-semibold text-ink">E-mail</dt><dd><a class="inline-block py-1 text-brand" href="{EMAIL_MAILTO}">{EMAIL}</a></dd></div>'
       f'<div><dt class="text-sm font-semibold text-ink">Postadres</dt><dd class="text-muted">Postbus 101<br/>7450 AC Holten</dd></div><div><dt class="text-sm font-semibold text-ink">KvK</dt><dd class="text-muted">67684351</dd></div></dl></aside></div></section>')
     page("/offerte/", "Offerte aanvragen dakdekker | Johnny's Dakwerken",
-         "Vraag een vrijblijvende offerte aan bij Johnny's Dakwerken voor dakbedekking, zinkwerk, isolatie of renovatie. Actief in heel Nederland. Reactie via WhatsApp of telefoon.", body, "/offerte/")
+         "Vraag een vrijblijvende offerte aan bij Johnny's Dakwerken voor dakbedekking, zinkwerk, isolatie of renovatie. Actief in heel Nederland. Reactie per e-mail of telefoon.", body, "/offerte/")
 
 def contact():
-    body = (page_head("Contact", "Neem contact op met Johnny", "Bel of app voor spoed, advies of een vrijblijvende offerte. Bij lekkage of schade komt Johnny zo spoedig mogelijk bij u langs.") +
+    body = (page_head("Contact", "Neem contact op met Johnny", "Bel of mail voor spoed, advies of een vrijblijvende offerte. Bij lekkage of schade komt Johnny zo spoedig mogelijk bij u langs.") +
       f'<section class="sec-pad px-5"><div class="mx-auto grid max-w-6xl gap-5 md:grid-cols-3">'
-      f'<div class="r-card border border-line bg-card p-6 md:col-span-2 md:p-8"><h2 class="font-serif text-2xl font-semibold text-ink">Direct in contact</h2><p class="mt-3 max-w-xl text-[17px] text-muted">De snelste weg is WhatsApp of een telefoontje. Stuur gerust een foto van uw dak of de schade mee.</p><div class="mt-6">{pair()}</div>'
+      f'<div class="r-card border border-line bg-card p-6 md:col-span-2 md:p-8"><h2 class="font-serif text-2xl font-semibold text-ink">Direct in contact</h2><p class="mt-3 max-w-xl text-[17px] text-muted">Vraag een offerte aan, bel Johnny of stuur een e-mail. Voeg gerust een foto van uw dak of de schade toe.</p><div class="mt-6">{contact_cta(dark=False)}</div>'
       f'<p class="mt-6 text-[16px] text-muted">Liever een offerte op schrift? <a class="font-semibold text-brand" href="/offerte/">Vraag een offerte aan →</a></p></div>'
       f'<div class="r-card border border-line bg-card p-6 md:p-8"><h2 class="font-serif text-2xl font-semibold text-ink">Gegevens</h2><dl class="mt-5 space-y-4 text-[16px]">'
       f'<div><dt class="text-sm font-semibold text-ink">Telefoon</dt><dd><a class="inline-block py-1 text-brand" href="{PHONE_TEL}">{PHONE_TXT}</a></dd></div>'
+      f'<div><dt class="text-sm font-semibold text-ink">E-mail</dt><dd><a class="inline-block py-1 text-brand" href="{EMAIL_MAILTO}">{EMAIL}</a></dd></div>'
       f'<div><dt class="text-sm font-semibold text-ink">Postadres</dt><dd class="text-muted">Johnny van Ophuizen<br/>Postbus 101<br/>7450 AC Holten</dd></div>'
       f'<div><dt class="text-sm font-semibold text-ink">KvK</dt><dd class="text-muted">67684351</dd></div></dl></div></div></section>')
     page("/contact/", "Contact dakdekker | Johnny's Dakwerken",
-         "Contact met Johnny's Dakwerken: bel of app voor lekkage, advies of een vrijblijvende offerte. Actief in heel Nederland, vanuit Deventer. Telefoon 06 41 72 37 59.", body, "/contact/")
+         "Contact met Johnny's Dakwerken: bel of mail voor lekkage, advies of een vrijblijvende offerte. Actief in heel Nederland, vanuit Deventer. Telefoon 06 41 72 37 59.", body, "/contact/")
 
 def notfound():
     body = (f'<section class="sec-pad px-5"><div class="mx-auto max-w-2xl text-center"><h1 class="font-serif text-4xl font-semibold text-ink">Deze pagina bestaat niet</h1><p class="mt-4 text-lg text-muted">Bekijk de diensten van Johnny of ga terug naar de startpagina.</p>'

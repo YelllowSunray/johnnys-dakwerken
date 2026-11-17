@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 PHONE_TEL = "tel:+31641723759"
-WA = "https://wa.me/31641723759"
 PHONE_TXT = "06 41 72 37 59"
+EMAIL = "Info@johnnydakwerken.nl"
+EMAIL_MAILTO = "mailto:info@johnnydakwerken.nl"
 
 STEPS = [
-    ("U neemt contact op", "Stuur Johnny een WhatsApp-bericht of bel hem. Vertel kort wat er aan de hand is."),
+    ("U neemt contact op", "Bel Johnny, mail hem of vraag een offerte aan. Vertel kort wat er aan de hand is."),
     ("Johnny bekijkt uw dak", "Ter plekke wordt naar uw dak en de ondergrond gekeken. Een inspectie is vrijblijvend."),
     ("U krijgt advies", "Voor elke ondergrond adviseert Johnny een passend daksysteem, gebaseerd op een duurzame en waterdichte constructie."),
     ("Vakkundige uitvoering", "Het werk wordt uitgevoerd, zodat uw dak weer bestand is tegen alle weersinvloeden."),
 ]
 STEPS_LEK = [
-    ("U neemt snel contact op", "Stuur Johnny een WhatsApp-bericht of bel hem. Hoe eerder u het meldt, hoe beter erger te voorkomen is."),
+    ("U neemt snel contact op", "Bel Johnny of mail hem. Hoe eerder u het meldt, hoe beter erger te voorkomen is."),
     ("Zo spoedig mogelijk bij u langs", "Bij lekkage of schade komt Johnny zo spoedig mogelijk bij u langs om het dak te bekijken."),
     ("U krijgt advies", "Johnny vertelt wat er aan de hand is en welke oplossing past bij uw dak en de ondergrond."),
     ("Vakkundige oplossing", "Het werk wordt vakkundig uitgevoerd, zodat uw dak weer waterdicht is."),
@@ -61,7 +62,7 @@ D = [
   facts=["Voor hellende daken","Natuurleien en kunstleien","Strakke, duurzame afwerking","Combinatie met zinkwerk mogelijk"],
   when=["U wilt leien op uw hellende dak","U zoekt een alternatief voor dakpannen","Uw dak is aan vervanging toe"],
   related=["pannendaken","zinkwerk","nieuwbouw-verbouw-renovatie"], steps=STEPS,
-  source="WhatsApp (leien); werkzaamheden.html"),
+  source="client (leien); werkzaamheden.html"),
  dict(slug="shingles", nav="Shingles", title="Shingles",
   card="Een klassieke afwerking voor hellende daken.",
   kicker="Dienst · Hellende daken",
@@ -93,7 +94,7 @@ D = [
   facts=["Zinken dakgoot","Zinken afdekkap","Zink- en loodwerk","Vrijblijvende inspectie"],
   when=["Uw zinkwerk is aan vervanging toe","Uw dakgoot of afdekkap is beschadigd of lekt","U wilt uw dak laten afwerken met zink of lood"],
   related=["bitumen","kunststof","lekkage-en-reparatie"], steps=STEPS,
-  source="werkzaamheden.html (Zinkwerk, Zinken dakgoot, Zinken afdek kap) + WhatsApp (lood&zinkwerk)"),
+  source="werkzaamheden.html (Zinkwerk, Zinken dakgoot, Zinken afdek kap) + client (lood&zinkwerk)"),
  dict(slug="isolatie", nav="Dakisolatie", title="Dakisolatie",
   card="Warm dak, PUR, PIR en afschot-isolatie voor meer comfort.",
   kicker="Dienst · Isolatie",
@@ -126,7 +127,7 @@ D = [
   facts=["Ook pannendaken","Lood- en zinkwerk mogelijk","Vrijblijvende inspectie","Advies ter plekke"],
   when=["U heeft een lekkage of schade aan uw pannendak","Uw dak is aan vervanging toe","U overweegt shingles als alternatief"],
   related=["shingles","zinkwerk","lekkage-en-reparatie"], steps=STEPS,
-  source="WhatsApp (Johnny: pannen daken); algemene teksten index/werkzaamheden"),
+  source="client (Johnny: pannen daken); algemene teksten index/werkzaamheden"),
  dict(slug="nieuwbouw-verbouw-renovatie", nav="Nieuwbouw, verbouw & renovatie", title="Nieuwbouw, verbouw & renovatie",
   card="Dakwerk bij nieuwbouw, een verbouwing of de renovatie van uw dak.",
   kicker="Dienst · Nieuwbouw & renovatie",
@@ -140,7 +141,7 @@ D = [
   facts=["Nieuwbouw","Verbouw","Renovatie","Dakbedekking, isolatie, zink en boeibekleding"],
   when=["U bouwt of verbouwt en heeft een dakdekker nodig","Uw bestaande dak moet worden gerenoveerd","U wilt advies over het juiste daksysteem"],
   related=["bitumen","isolatie","shingles"], steps=STEPS,
-  source="WhatsApp (nieuw bouw, verbouw, renovatie); werkzaamheden.html (Afschot-isolatie bij renovatie); materialenlijst (boeibekleding)"),
+  source="client (nieuw bouw, verbouw, renovatie); werkzaamheden.html (Afschot-isolatie bij renovatie); materialenlijst (boeibekleding)"),
  dict(slug="lekkage-en-reparatie", nav="Lekkage & reparatie", title="Lekkage, reparatie & onderhoud",
   card="Lekkage of schade? Johnny komt zo spoedig mogelijk bij u langs.",
   kicker="Dienst · Spoed",

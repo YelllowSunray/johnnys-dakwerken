@@ -22,12 +22,12 @@ with sync_playwright() as p:
         page.screenshot(path=os.path.join(ART, f"home-hero-{name}-390.png"))
         ctx.close()
 
-    # Desktop hero check (strak)
-    ctx = browser.new_context(viewport={"width": 1440, "height": 900})
-    page = ctx.new_page()
-    page.goto(BASE + "/", wait_until="networkidle", timeout=90000)
-    page.screenshot(path=os.path.join(ART, "home-hero-strak-1440.png"))
-    ctx.close()
+    for name, qs in STYLES:
+        ctx = browser.new_context(viewport={"width": 1440, "height": 900})
+        page = ctx.new_page()
+        page.goto(BASE + "/" + qs, wait_until="networkidle", timeout=90000)
+        page.screenshot(path=os.path.join(ART, f"home-hero-{name}-1440.png"))
+        ctx.close()
 
     # Sticky nav scroll check
     for w in (390, 1440):

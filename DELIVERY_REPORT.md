@@ -1,38 +1,37 @@
-# Delivery report — Werkgebied heel Nederland + source bundle
+# Delivery report — WhatsApp removed, e-mail + offerte CTAs
 
-## Content (Samir Nov 17)
-Johnny works **door heel Nederland**; **Deventer = vestiging**, not service boundary.
+## Changes (Samir Nov 17, t1563/t1564)
+Johnny requested **no WhatsApp** anywhere on the site.
 
-| Area | Change |
-|------|--------|
-| Home hero kicker | `Dakdekker in heel Nederland` |
-| Home H1 | `Uw dak, weer jarenlang waterdicht` (no city in headline) |
-| Navbar | `Dakdekker · Heel Nederland` (all styles via `.brand-tag`) |
-| Trust stats | `NL` / `Heel Nederland · vanuit Deventer` |
-| Werkgebied section | **Actief in heel Nederland, vanuit Deventer** (new on home) |
-| Footer | Actief in heel Nederland, vanuit Deventer |
-| Meta / page titles | Deventer removed from service-area SEO; `vanuit Deventer` where base is relevant |
-| Dienst pages | `TITLES` + pannendaken H2 updated |
-| Unchanged on purpose | Deventer skyline hero imagery + alt text; “Geboren en getogen in Deventer” (bio) |
+| Area | New behaviour |
+|------|----------------|
+| All heroes | Primary **Offerte aanvragen** → `/offerte/`; secondary **Bel** → `tel:+31641723759` |
+| CTA bands (dark) | **Offerte**, **Bel**, **E-mail** |
+| Mobile menu | Offerte CTA + **Bel** + **Info@johnnydakwerken.nl** (no WhatsApp) |
+| Footer / contact / offerte | **Info@johnnydakwerken.nl** (`mailto:info@johnnydakwerken.nl`) |
+| Offerte form | Submit opens **mailto** with prefilled body (no wa.me) |
+| JSON-LD | `RoofingContractor` on every page: phone + `info@johnnydakwerken.nl` |
+| CSS | Removed all `.btn-wa` / WhatsApp styling |
 
-## QA (`scripts/run_qa.py`)
-| URL | Result |
-|-----|--------|
-| `/` (strak default) | BUTTONS_OK |
-| `?style=nacht` | BUTTONS_OK |
-| `?style=ambachtelijk` | BUTTONS_OK |
+Werkgebied and visual styles unchanged.
 
-Sticky nav after scroll: `header y = 0` @ 390 and 1440.
+## QA verification
+```bash
+rg -i 'wa\.me|whatsapp' dist/   # no matches
+```
+Result: **GREP_OK**
 
-## Artifacts (`/opt/cursor/artifacts/`)
-- `dist.zip` — deployable build
-- `source.tgz` — full editable project (`src/`, `public/`, configs, README; **excludes** `dist/`, `node_modules/`)
+| Check | Result |
+|-------|--------|
+| `scripts/run_qa.py` `/`, `?style=nacht`, `?style=ambachtelijk` | BUTTONS_OK |
+| `scripts/check_buttons.py` | CHECK_OK (offerte, tel, mail on sample pages) |
+
+## Hero screenshots (`/opt/cursor/artifacts/`)
+`home-hero-{strak,nacht,ambachtelijk}-{390,1440}.png`
+
+## Artifacts
+- `dist.zip`
+- `source.tgz` (excludes `dist/`, `node_modules/`; includes `public/vercel.json`, `src/`, configs, README)
 - `DELIVERY_REPORT.md`
-- Mobile heroes: `home-hero-{strak,nacht,ambachtelijk}-390.png`, `home-hero-strak-1440.png`
-- QA: `qa3_strak_127_sheet.png`, `qa3_nacht_127_sheet.png`, `qa3_ambachtelijk_127_sheet.png` (+ component PNGs)
 
-## Local repo
-- `.gitignore` ignores `dist/` and `node_modules/`
-- README: build (`python3 src/build.py` → `dist/`) + Vercel project **johnnydakwerken**
-
-**Not deployed** (per client request).
+**Not deployed.**
