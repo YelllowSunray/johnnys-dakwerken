@@ -138,7 +138,7 @@ def page(path, title, desc, body, active="", breadcrumb_parts=None):
     url = path
     ld = breadcrumb_ld(breadcrumb_parts) if breadcrumb_parts else ""
     home_attr = ' data-page="home"' if path == "/" else ""
-    out = (f'<!DOCTYPE html><html lang="nl" data-style="bruin"{home_attr}><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="icon" href="/favicon.svg" type="image/svg+xml"/><link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/>'
+    out = (f'<!DOCTYPE html><html lang="nl" data-style="bruin"{home_attr}><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="icon" href="/favicon.svg?v=bruin" type="image/svg+xml"/><link rel="icon" href="/favicon-32.png?v=bruin" sizes="32x32" type="image/png"/><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=bruin"/>'
            f'<title>{esc(title)}</title><meta name="description" content="{esc(desc)}"/><meta name="robots" content="noindex"/>'
            f'<meta property="og:title" content="{esc(title)}"/><meta property="og:description" content="{esc(desc)}"/><meta property="og:locale" content="nl_NL"/>'
            f'<meta name="theme-color" content="#070707"/>'
