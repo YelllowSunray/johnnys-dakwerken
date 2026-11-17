@@ -116,7 +116,7 @@ def footer():
     ds = "".join(f'<li><a class="inline-block py-1.5 hover:text-white" href="/diensten/{d["slug"]}/">{esc(d["nav"])}</a></li>' for d in D)
     pg = "".join(f'<li><a class="inline-block py-1.5 hover:text-white" href="{h}">{l}</a></li>' for h, l in NAV if h != "/diensten/") + '<li><a class="inline-block py-1.5 hover:text-white" href="/offerte/">Offerte aanvragen</a></li>'
     return (f'<footer class="site-f bg-dark text-slate-300"><div class="site-hero pb-6 pt-14"><div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr]">'
-            f'<div><div class="flex items-center gap-2.5">{logo(True)}</div><p class="mt-3 max-w-xs text-[15.5px] leading-relaxed">Actief in heel Nederland, vanuit Deventer. Bitumen, kunststof, leien, zink en boeibekleding, met ruim 20 jaar ervaring.</p></div>'
+            f'<div><div class="flex items-center gap-2.5">{logo(True)}</div><p class="mt-3 max-w-xs text-[15.5px] leading-relaxed">Actief in heel Nederland, vanuit Deventer. Bitumen, kunststof, leien, pannendaken, zinkwerk en boeibekleding, met ruim 20 jaar ervaring.</p></div>'
             f'<div><p class="text-sm font-semibold uppercase tracking-[0.14em] text-white">Diensten</p><ul class="mt-3 text-[15.5px]">{ds}</ul></div>'
             f'<div><p class="text-sm font-semibold uppercase tracking-[0.14em] text-white">Pagina\'s</p><ul class="mt-3 text-[15.5px]">{pg}</ul></div>'
             f'<div><p class="text-sm font-semibold uppercase tracking-[0.14em] text-white">Contact</p><ul class="mt-3 text-[15.5px]"><li><a class="inline-block py-1.5 font-semibold text-white" href="{PHONE_TEL}">{PHONE_TXT}</a></li>'
@@ -266,7 +266,7 @@ def stats():
 # ---------------- pages ----------------
 def home():
     cards = "".join(dcard(BY[s]) for s in ["bitumen", "kunststof", "zinkwerk", "shingles", "isolatie", "pannendaken"])
-    why = [("Ruim 20 jaar ervaring", "In dakbedekking, bitumen, kunststof, leien en zink."),
+    why = [("Ruim 20 jaar ervaring", "In dakbedekking, bitumen, kunststof, leien, pannendaken en zinkwerk."),
            ("Advies per ondergrond", "Voor elke ondergrond een passend, duurzaam en waterdicht daksysteem."),
            ("Spoed bij lekkage", "Bij lekkage of schade komen wij zo spoedig mogelijk bij u langs."),
            ("Vrijblijvende inspectie", "Wij bekijken uw dak ter plekke en adviseren u eerlijk.")]
@@ -274,8 +274,8 @@ def home():
     body = (f'<section class="overflow-hidden bg-surface pb-12 pt-6 lg:pb-20 lg:pt-10"><div class="hero-grid site-hero grid items-center gap-6 lg:grid-cols-2 lg:gap-16"><div class="hero-tx min-w-0">'
       f'<p class="mb-4 flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>Dakdekker in heel Nederland</p>'
       f'<h1 class="font-serif text-[clamp(2.25rem,5.2vw,4.25rem)] font-semibold leading-[1.02] tracking-tight text-ink">Uw dak, <em class="font-semibold not-italic text-brand">weer jarenlang waterdicht</em></h1>'
-      f'<p class="mt-4 max-w-[540px] text-[17px] leading-snug text-muted lg:hidden">Bitumen, kunststof, leien en zink. Bij lekkage komen wij zo snel mogelijk bij u langs.</p>'
-      f'<p class="mt-5 hidden max-w-[540px] text-[clamp(17px,1.45vw,20px)] leading-snug text-muted lg:block">Johnny\'s Dakwerken verzorgt bitumen, kunststof, leien, zink en boeibekleding. Bij lekkage of schade komen wij zo spoedig mogelijk bij u langs.</p>'
+      f'<p class="mt-4 max-w-[540px] text-[17px] leading-snug text-muted lg:hidden">Bitumen, kunststof, leien, pannendaken en zinkwerk. Bij lekkage komen wij zo snel mogelijk bij u langs.</p>'
+      f'<p class="mt-5 hidden max-w-[540px] text-[clamp(17px,1.45vw,20px)] leading-snug text-muted lg:block">Johnny\'s Dakwerken verzorgt bitumen, kunststof, leien, pannendaken, zinkwerk en boeibekleding. Bij lekkage of schade komen wij zo spoedig mogelijk bij u langs.</p>'
       f'<div class="mt-6 lg:mt-8">{hero_cta()}</div><div class="mt-8 hidden lg:block hero-stats-slot">{stats()}</div></div>'
       f'{hero_photo("/img/werk/bit1.webp", "Plat dak met nieuwe bitumineuze dakbedekking", "50% 50%", pano=True)}'
       f'</div></section>'
@@ -298,7 +298,7 @@ def home():
       f'<section class="sec-pad border-y border-line bg-band px-5"><div class="site-hero">{sec_head("Werkgebied", "Actief in heel Nederland, vanuit Deventer", "Johnny\'s Dakwerken werkt door het hele land: van spoedreparatie tot complete renovatie. Onze vestiging en uitvalsbasis is Deventer.")}'
       f'<p class="-mt-6 max-w-2xl text-lg text-muted">Waar u ook woont in Nederland, u kunt ons bellen of mailen. We komen bij u langs voor een vrijblijvende inspectie en vakkundige uitvoering.</p></div></section>'
       f'{cta_band()}')
-    page("/", "Dakdekker heel Nederland | Johnny's Dakwerken: bitumen, kunststof, leien en zink",
+    page("/", "Dakdekker heel Nederland | Johnny's Dakwerken: bitumen, kunststof, leien, pannendaken en zinkwerk",
          "Johnny's Dakwerken: dakdekker actief in heel Nederland, vanuit Deventer. Ruim 20 jaar ervaring. Bitumen, EPDM en PVC, leien, pannendaken, zinkwerk en isolatie.", body, "/")
 
 def diensten():
@@ -307,7 +307,7 @@ def diensten():
              '<div><h3 class="font-serif text-xl font-semibold text-white">Weet u niet welke dienst u nodig heeft?</h3>'
              '<p class="mt-3 text-[15.5px] leading-relaxed text-slate-300">Bel of mail ons. We bekijken uw dak ter plekke en adviseren per ondergrond een passend systeem.</p></div>'
              f'<span class="mt-6 inline-flex items-center gap-1.5 pt-1 text-[15px] font-semibold text-white">Neem contact op {ARROW}</span></a>')
-    mats = "".join(f'<li class="r-btn border border-line bg-card px-4 py-2 text-[15px] font-medium text-ink">{m}</li>' for m in ["Bitumen", "Kunststof", "Leien", "Zink", "Boeibekleding"])
+    mats = "".join(f'<li class="r-btn border border-line bg-card px-4 py-2 text-[15px] font-medium text-ink">{m}</li>' for m in ["Bitumen", "Kunststof", "Leien", "Pannendaken", "Zinkwerk", "Boeibekleding"])
     body = (f'<section class="sec-pad bg-surface"><div class="site-hero"><p class="flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>Diensten</p>'
       f'<h1 class="mt-4 max-w-3xl font-serif text-[clamp(2.1rem,5vw,3.6rem)] font-semibold leading-[1.05] tracking-tight text-ink">Alle dakwerk van Johnny\'s Dakwerken, op één plek</h1>'
       f'<p class="mt-5 max-w-2xl text-[clamp(17px,1.4vw,19px)] leading-relaxed text-muted">Voor bitumineuze en kunststof dakbedekking bent u bij ons aan het juiste adres. Kies hieronder een dienst voor meer informatie.</p>'
