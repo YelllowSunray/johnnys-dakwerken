@@ -16,7 +16,7 @@
 @font-face{font-family:"Playfair Display";font-style:normal;font-weight:400 900;font-display:swap;src:url(/fonts/playfair.woff2) format("woff2")}
 @font-face{font-family:"Source Sans 3";font-style:normal;font-weight:200 900;font-display:swap;src:url(/fonts/sourcesans.woff2) format("woff2")}
 @font-face{font-family:"Exo 2";font-style:italic;font-weight:700 900;font-display:swap;src:url(/fonts/exo2-italic.woff2) format("woff2")}
-@font-face{font-family:"Exo 2";font-style:normal;font-weight:600 800;font-display:swap;src:url(/fonts/exo2.woff2) format("woff2")}
+@font-face{font-family:"Exo 2";font-style:normal;font-weight:400 800;font-display:swap;src:url(/fonts/exo2.woff2) format("woff2")}
 @font-face{font-family:"Saira";font-style:italic;font-weight:600 900;font-display:swap;src:url(/fonts/saira-italic.woff2) format("woff2")}
 @font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/07c7676b89ed2778-s.p.2bn3s6zvc0dyp.woff2) format("woff2")}
 @layer base{
@@ -83,8 +83,8 @@ html[data-style="nacht"] .r-btn{transform:skewX(-12deg);font-weight:800;font-siz
 html[data-style="nacht"] .r-btn .btn-in{transform:skewX(12deg)}
 html[data-style="nacht"] .r-btn.bg-accent{background:var(--lime);color:#0b0b0c}
 html[data-style="nacht"] .r-card,html[data-style="nacht"] .r-img{box-shadow:none;outline:0}
-html[data-style="nacht"] h1,html[data-style="nacht"] h2,html[data-style="nacht"] h3{font-style:italic;font-weight:600;font-stretch:normal}
-html[data-style="nacht"] h1 em{font-weight:600;font-style:italic;color:var(--lime);-webkit-text-fill-color:var(--lime);background:none}
+html[data-style="nacht"] h1,html[data-style="nacht"] h2,html[data-style="nacht"] h3{font-family:var(--font-sans);font-style:normal;font-weight:500;font-stretch:normal}
+html[data-style="nacht"] h1 em{font-weight:500;font-style:normal;color:var(--lime);-webkit-text-fill-color:var(--lime);background:none}
 html[data-style="nacht"] .kick-bar{height:12px;width:34px;border-radius:0}
 html[data-style="nacht"] p.uppercase{letter-spacing:.26em;font-family:"Exo 2",system-ui,sans-serif;font-weight:700}
 html[data-style="nacht"] #menu a.font-serif{font-style:italic;font-weight:600}
@@ -134,11 +134,11 @@ html[data-style="strak"]{
 }
 html[data-style="strak"] body{font-size:16.5px;background:#0a0a0b}
 html[data-style="strak"] h1,html[data-style="strak"] h2,html[data-style="strak"] h3{
-  font-family:"Exo 2",system-ui,sans-serif;font-stretch:normal;font-style:italic;font-weight:600;
+  font-family:var(--font-sans);font-stretch:normal;font-style:normal;font-weight:500;
   text-transform:uppercase;letter-spacing:.025em;line-height:1.04;
   background:none!important;-webkit-text-fill-color:#eef1f4!important;color:#eef1f4!important;
 }
-html[data-style="strak"] h1 em,html[data-style="strak"] h2 em{font-style:italic;font-weight:600;color:var(--lime)!important;-webkit-text-fill-color:var(--lime)!important}
+html[data-style="strak"] h1 em,html[data-style="strak"] h2 em{font-style:normal;font-weight:500;color:var(--lime)!important;-webkit-text-fill-color:var(--lime)!important}
 html[data-style="strak"] header.site-h{background:rgba(10,10,11,.97);border-bottom:0;box-shadow:inset 0 -3px 0 var(--lime),0 6px 24px -10px rgba(0,0,0,.4)}
 html[data-style="strak"] .r-btn{transform:skewX(-10deg);font-family:"Exo 2",system-ui,sans-serif;font-weight:800;font-size:14px}
 html[data-style="strak"] .r-btn .btn-in{transform:skewX(10deg)}
@@ -533,3 +533,16 @@ html[data-style="strak"] .diensten-grid>a:nth-child(odd) .r-card{background:#0f1
 html[data-style="strak"] .diensten-grid>a:nth-child(even) .r-card{background:#14161a}
 html[data-style="strak"] .diensten-grid>a:hover{transform:translateY(-4px)}
 html[data-style="strak"] .diensten-grid>a{transition:transform .25s cubic-bezier(.2,.9,.1,1)}
+
+/* Strak / Nacht: light upright display headings (logo + buttons unchanged) */
+html[data-style="strak"] main :is(h1,h2,h3).font-serif,
+html[data-style="nacht"] main :is(h1,h2,h3).font-serif{
+  font-family:var(--font-sans)!important;
+  font-style:normal!important;
+  font-weight:500!important;
+}
+html[data-style="strak"] main :is(h1,h2) em,
+html[data-style="nacht"] main h1 em{
+  font-style:normal!important;
+  font-weight:500!important;
+}
