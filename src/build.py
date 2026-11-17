@@ -167,7 +167,7 @@ def hero_photo(src, alt, pos="50% 50%", eager=True, pano=False):
 def roofer_art():
     eb = "".join(f'<i class="e" style="--dx:{dx}px;--dy:{dy}px;--d:{d}s;--dl:{dl}s;--sz:{sz}px"></i>' for dx, dy, d, dl, sz in
                  [(14,-70,2.6,0,3),(34,-112,3.4,.5,2),(-8,-96,3.0,1.1,3),(52,-140,3.8,1.6,2),(22,-60,2.2,2.0,4),(70,-124,4.0,.9,2),(6,-132,3.6,2.4,2),(40,-84,2.8,1.4,3),(-20,-78,2.4,.3,2),(62,-100,3.2,2.9,3),(28,-150,4.2,3.3,2),(10,-52,2.0,1.9,3)])
-    return ('<div class="hero-art-w"><img class="hero-art" src="/img/roofer.webp" width="965" height="537" loading="eager" alt="Dakdekker van Johnny\'s Dakwerken aan het werk op een dak met brander en bitumen"/>'
+    return ('<div class="hero-art-w"><img class="hero-art" src="/img/roofer.webp?v=gold" width="965" height="537" loading="eager" alt="Dakdekker van Johnny\'s Dakwerken aan het werk op een dak met brander en bitumen"/>'
             f'<span class="torch" aria-hidden="true"><i class="t-cast"></i><i class="t-halo"></i><i class="t-core"></i>{eb}</span></div>')
 
 FX = '<div class="fx" aria-hidden="true"></div>'
@@ -275,7 +275,7 @@ def home():
       f'<p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Aan het werk</p><h2 class="mt-3 font-serif text-[clamp(1.55rem,3.55vw,2.45rem)] font-semibold leading-tight text-ink">Vakwerk op uw dak</h2>'
       f'<p class="mt-4 max-w-md text-lg text-muted">Johnny\'s Dakwerken pakt het dakwerk aan met vakkennis en eigen materieel. Vraag een offerte aan of bel voor een vrijblijvende inspectie.</p><div class="mt-6">{hero_cta()}</div></div><div>{roofer_art()}</div></div></section>'
       f'<section class="sec-pad border-y border-line bg-band px-5"><div class="mx-auto grid max-w-6xl items-center gap-6 md:grid-cols-[auto_1fr] md:gap-14">'
-      f'<div class="johnny-shot relative aspect-[4/5] w-full overflow-hidden r-img shadow-xl md:aspect-[3/4] md:w-[260px]"><img src="/img/johnny.jpg?v=2" alt="Johnny van Ophuizen" loading="eager" class="absolute inset-0 h-full w-full object-cover" style="object-position:50% 42%"/></div>'
+      f'<div class="johnny-shot relative aspect-[4/5] w-full overflow-hidden r-img shadow-xl md:aspect-[3/4] md:w-[260px]"><img src="/img/johnny.jpg?v=3" alt="Johnny van Ophuizen" loading="eager" class="absolute inset-0 h-full w-full object-cover" style="object-position:50% 42%"/></div>'
       f'<div><p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-brand">Over ons</p>'
       f'<h2 class="mt-3 font-serif text-[clamp(1.55rem,3.55vw,2.45rem)] font-medium leading-tight text-ink">Even voorstellen: Johnny</h2>'
       f'<p class="mt-4 max-w-2xl text-lg text-muted">Met ruim +20 jaar ervaring in het dakdekkersvak weet Johnny als geen ander wat er komt kijken bij goed en vakkundig dakwerk. Samen met zijn team van ervaren vakmensen staat hij iedere dag klaar om kwaliteit en vakmanschap te leveren.</p>'
@@ -283,8 +283,9 @@ def home():
       f'<p class="mt-6"><a class="inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-brand" href="/over-ons/">Meer over ons {ARROW}</a></p></div></div></section>'
       f'<section class="sec-pad px-5"><div class="site-hero">{sec_head("Waarom Johnny\'s Dakwerken", "Kwaliteit en service staan voorop")}<ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{whyh}</ul>'
       f'<p class="mt-8"><a class="inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-brand" href="/werkwijze/">Bekijk de werkwijze {ARROW}</a></p></div></section>'
-      f'<section class="sec-pad border-y border-line bg-band px-5"><div class="site-hero">{sec_head("Werkgebied", "Actief in heel Nederland, vanuit Deventer", "Johnny\'s Dakwerken werkt door het hele land: van spoedreparatie tot complete renovatie. Onze vestiging en uitvalsbasis is Deventer.")}'
-      f'<p class="-mt-6 max-w-2xl text-lg text-muted">Waar u ook woont in Nederland, u kunt ons bellen of mailen. We komen bij u langs voor een vrijblijvende inspectie en vakkundige uitvoering.</p></div></section>'
+      f'<section class="werk-sec sec-pad border-y border-line bg-band px-5"><div class="site-hero werk-grid"><div>{sec_head("Werkgebied", "Actief in heel Nederland, vanuit Deventer", "Johnny\'s Dakwerken werkt door het hele land: van spoedreparatie tot complete renovatie. Onze vestiging en uitvalsbasis is Deventer.")}'
+      f'<p class="-mt-6 max-w-2xl text-lg text-muted">Waar u ook woont in Nederland, u kunt ons bellen of mailen. We komen bij u langs voor een vrijblijvende inspectie en vakkundige uitvoering.</p></div>'
+      f'<div class="werk-art">{roofer_art()}</div></div></section>'
       f'{cta_band()}')
     page("/", "Dakdekker heel Nederland | Johnny's Dakwerken: bitumen, kunststof, leien, pannendaken en zinkwerk",
          "Johnny's Dakwerken: dakdekker actief in heel Nederland, vanuit Deventer. Ruim 20 jaar ervaring. Bitumen, EPDM en PVC, leien, pannendaken, zinkwerk en isolatie.", body, "/")
@@ -394,7 +395,7 @@ def over():
     body = (f'<section class="sec-pad bg-surface"><div class="site-hero over-ons-hero">'
       f'<p class="over-kicker flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-brand"><span class="kick-bar h-0.5 w-7 bg-accent" aria-hidden="true"></span>Over ons</p>'
       f'<h1 class="over-title mt-1 font-serif text-[clamp(1.8rem,4.45vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink">Even voorstellen: Johnny</h1>'
-      f'<div class="over-photo-wrap"><div class="over-photo-in r-img shadow-md"><img src="/img/johnny.jpg?v=2" alt="Johnny van Ophuizen" loading="eager" width="320" height="400"/></div></div>'
+      f'<div class="over-photo-wrap"><div class="over-photo-in r-img shadow-md"><img src="/img/johnny.jpg?v=3" alt="Johnny van Ophuizen" loading="eager" width="320" height="400"/></div></div>'
       f'<div class="over-intro mt-2 flex flex-col gap-4 max-w-2xl">{intro}</div></div></section>'
       f'<section class="sec-pad px-5"><div class="mx-auto max-w-6xl">'
       f'<div class="r-card border border-line bg-card p-6 md:p-8"><h3 class="font-serif text-xl font-medium text-ink">De materialen waarmee wij werken</h3><ul class="mt-5 flex flex-wrap gap-2.5">{mats}</ul>'

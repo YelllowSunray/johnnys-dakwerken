@@ -229,6 +229,15 @@ html[data-lime] .torch{display:block}
 .torch .e{left:28%;top:73%;width:var(--sz);height:var(--sz);border-radius:50%;background:#ffc15a;box-shadow:0 0 7px 2px rgba(255,150,40,.8);opacity:0;animation:emberup var(--d) var(--dl) linear infinite;will-change:transform,opacity}
 @keyframes emberup{0%{transform:translate3d(0,0,0) scale(1);opacity:0}10%{opacity:1}100%{transform:translate3d(var(--dx),var(--dy),0) scale(.25);opacity:0}}
 @media(prefers-reduced-motion:reduce){html[data-lime] .torch .e{display:none}}
+.werk-grid{display:grid;align-items:center;gap:1.75rem}
+@media(min-width:900px){.werk-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);column-gap:2.75rem}}
+.werk-art .hero-art-w{display:block;position:relative;width:100%;aspect-ratio:965/537}
+.werk-art .hero-art{-webkit-mask-image:none;mask-image:none}
+html[data-style="bruin"] .werk-art .torch{display:block!important}
+@media(prefers-reduced-motion:reduce){
+  .werk-art .torch .e{display:none}
+  .werk-art .t-halo,.werk-art .t-core,.werk-art .t-cast{animation:none}
+}
 .pano,.pano-card,.roofer-sec{display:none}
 html[data-lime] .roofer-sec{display:block}
 .pano img{width:100%;height:100%;object-fit:cover;object-position:68% 55%;display:block}
